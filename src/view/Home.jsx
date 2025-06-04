@@ -1,15 +1,29 @@
-import React from 'react'
+import React from "react";
+import "../styles/view/HomeStyle.css";
 
 export default function Home() {
   return (
     <>
-    <div className="container">
-        <div className="row">
-            <div className="col-md-12">
-                <h1 className="text-center">Bienvenido a la plantilla de React</h1>
+      <section id="home" className="hero container-fluid">
+        <div className="container-fluid">
+          <div className="hero-content fade-in">
+            <h1>CrepyVara</h1>
+            <p>
+              Deliciosas crepas artesanales hechas con amor y los ingredientes
+              más frescos. Una experiencia única que combina sabor, calidad y la
+              ternura de nuestro capybara mascota.
+            </p>
+            <div className="cta-buttons">
+              <a href="#menu" className="btn btn-primary">
+                Ver Menú
+              </a>
+              <a href="#reservas" className="btn btn-secondary">
+                Hacer Reserva
+              </a>
             </div>
+          </div>
         </div>
-    </div>
+      </section>
     </>
-  )
+  );
 }
