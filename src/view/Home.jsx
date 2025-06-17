@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/view/HomeStyle.css";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
@@ -14,9 +15,9 @@ export default function Home() {
               ternura de nuestro capybara mascota.
             </p>
             <div className="cta-buttons">
-              <a href="/menu" className="btn btn-primary" id="ver-menu">
+              <Link to="/menu" className="btn btn-primary" id="ver-menu">
                 Ver Menú
-              </a>
+              </Link>
               <a href="#reservas" className="btn btn-secondary">
                 Hacer Reserva
               </a>

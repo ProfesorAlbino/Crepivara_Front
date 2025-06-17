@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import '../styles/components/NavbarStyle.css'
 import DarkMode from './DarkMode';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,12 +14,14 @@ export default function Navbar() {
     <>
         <nav className="navbar navbar-expand-lg fixed-top">
         <div className="container">
-            <img 
-                src="../images/Logo.webp" 
-                alt="logo" 
-                className="navbar-brand-logo" 
-            />
-            <a className="navbar-brand" href="/">Crepivara</a>
+            <Link to="/" className="navbar-brand d-flex align-items-center">
+        <img
+          src="../images/Logo.webp"
+          alt="logo"
+          className="navbar-brand-logo"
+        />
+        <span className="navbar-brand-title">Crepivara</span>
+      </Link>
             <div className="d-flex align-items-center">
                 <DarkMode />
                 <button 
@@ -33,19 +36,19 @@ export default function Navbar() {
             <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarNav">
                 <ul className="navbar-nav ms-auto">
                     <li className="nav-item">
-                        <a className="nav-link" href="#inicio" onClick={handleNavClick}>Inicio</a>
+                        <Link className="nav-link" to="/" onClick={handleNavClick}>Inicio</Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#especialidades" onClick={handleNavClick}>Especialidades</a>
+                        <Link className="nav-link" to="#especialidades" onClick={handleNavClick}>Especialidades</Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#menu" onClick={handleNavClick}>Menú</a>
+                        <Link className="nav-link" to="#menu" onClick={handleNavClick}>Menú</Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#nosotros" onClick={handleNavClick}>Nosotros</a>
+                        <Link className="nav-link" to="#nosotros" onClick={handleNavClick}>Nosotros</Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#contacto" onClick={handleNavClick}>Contacto</a>
+                        <Link className="nav-link" to="#contacto" onClick={handleNavClick}>Contacto</Link>
                     </li>
                 </ul>
             </div>
