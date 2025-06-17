@@ -14,7 +14,7 @@ export default function Home() {
               ternura de nuestro capybara mascota.
             </p>
             <div className="cta-buttons">
-              <a href="#menu" className="btn btn-primary">
+              <a href="/menu" className="btn btn-primary" id="ver-menu">
                 Ver Menú
               </a>
               <a href="#reservas" className="btn btn-secondary">

@@ -7,6 +7,7 @@ import Home from "./view/Home";
 import AdminHome from "./view/admin/AdminHome";
 
 import "./index.css";
+import MainMenu from "./view/menu/mainMenu";
 
 const isAuthenticated = () => localStorage.getItem("user") !== null;
 
@@ -34,6 +35,7 @@ function App() {
         {/* Rutas públicas con UserLayout */}
         <Route element={<UserLayout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/menu" element={<MainMenu />} />
         </Route>
 
         {/* Rutas privadas con AdminLayout */}
@@ -46,6 +48,9 @@ function App() {
         {/* Auth fuera de cualquier layout */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        
+
+        {/* Redirección por defecto */}
       </Routes>
     </Router>
   );
