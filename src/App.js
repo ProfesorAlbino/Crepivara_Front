@@ -16,36 +16,36 @@ const PrivateRoute = ({ children }) => {
     : <Navigate to="/login" replace />;
 };
 
+// Componente wrapper para AdminLayout que usa Outlet
+const AdminLayoutWrapper = () => {
+  return (
+    <PrivateRoute>
+      <AdminLayout>
+        <Outlet />
+      </AdminLayout>
+    </PrivateRoute>
+  );
+};
+
 function App() {
   return (
     <Router>
       <Routes>
-
         {/* Rutas públicas con UserLayout */}
         <Route element={<UserLayout />}>
           <Route path="/" element={<Home />} />
         </Route>
 
         {/* Rutas privadas con AdminLayout */}
-        <Route
-          path="/home-admin/*"
-          element={
-            <PrivateRoute>
-              <AdminLayout>
-                <Outlet />
-              </AdminLayout>
-            </PrivateRoute>
-          }
-        >
-          {/* subrutas de admin */}
+        <Route path="/home-admin" element={<AdminLayoutWrapper />}>
+          {/* Subrutas de admin */}
           <Route index element={<AdminHome />} />
           {/* <Route path="settings" element={<AdminSettings />} /> */}
         </Route>
 
-        {/* Auth fuera de cualquier layout, si quieres */}
+        {/* Auth fuera de cualquier layout */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-
       </Routes>
     </Router>
   );

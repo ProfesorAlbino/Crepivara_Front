@@ -1,9 +1,4 @@
- main{
-    margin-left: 180px;
-    
-}
-
-.mainContainer{
+ .mainContainer{
     background-color: var(--background-color-1);
     height: 100vh;
 }
