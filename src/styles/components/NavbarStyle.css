@@ -58,7 +58,7 @@
 }
 
 @media (max-width: 768px) {
-    .navbar-brand-logo {
+    .navbar-brand {
         display: none;
     }
 }
