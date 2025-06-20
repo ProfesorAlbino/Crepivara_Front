@@ -5,6 +5,7 @@ export class CardDashboard extends Component {
   render() {
     const { Data } = this.props;
     const {descrption} = this.props
+    const {title} = this.props;
 
     return (
       <>
@@ -12,8 +13,10 @@ export class CardDashboard extends Component {
           <div class="card stat-card">
             <div class="card-body d-flex justify-content-between align-items-center">
               <div >
+                <h5 class="card-title mb-0">{title}</h5>
                 <h6 class="card-subtitle mb-1">{descrption}</h6>
                 <h3 class="card-title mb-0">{Data}</h3>
+
               </div>
               <div class="stat-icon">
                 <Database />
