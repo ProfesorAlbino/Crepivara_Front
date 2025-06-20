@@ -8,6 +8,7 @@ import AdminHome from "./view/admin/AdminHome";
 
 import "./index.css";
 import MainMenu from "./view/menu/mainMenu";
+import TimeCounter from "./view/counter/TimeCounter";
 
 const isAuthenticated = () => localStorage.getItem("user") !== null;
 
@@ -48,6 +49,8 @@ function App() {
         {/* Auth fuera de cualquier layout */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/timecount" element={<TimeCounter />} />
+        
         
 
         {/* Redirección por defecto */}

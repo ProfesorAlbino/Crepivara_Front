@@ -5,6 +5,7 @@ export class CardDashboard extends Component {
   render() {
     const { Data } = this.props;
     const {descrption} = this.props
+
     return (
       <>
         <div class="col-12 col-sm-6 col-xl-6">
@@ -22,5 +23,6 @@ export class CardDashboard extends Component {
         </div>
       </>
     );
+    
   }
 }
