@@ -1,5 +1,5 @@
 import "../../styles/view/TimeCounterStyle.css"
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef} from 'react';
 import { useNavigate } from "react-router-dom";
 
 const emojisFloating = ['🥞', '🍯', '🍓', '🥞'];
@@ -17,6 +17,45 @@ export default function TimeCounter() {
   const [confettiPieces, setConfettiPieces] = useState([]);
   const intervalRef = useRef(null);
   const navigate = useNavigate();
+
+ useEffect(() => {
+    // Cambia según tu herramienta (CRA o Vite):
+    const openingDateStr = process.env.REACT_APP_OPENING_DATE;
+    const hourOpeningDateStr = process.env.REACT_APP_OPENING_HOUR; // si usas CRA
+    // const openingDateStr = import.meta.env.VITE_OPENING_DATE; // si usas Vite
+
+    if (!openingDateStr) {
+      console.warn('REACT_APP_OPENING_DATE no está definida');
+      return;
+    }
+    // Esperamos formato "DD/MM/YYYY"
+    const partes = openingDateStr.split('/');
+    if (partes.length !== 3) {
+      console.error('Formato inválido en REACT_APP_OPENING_DATE:', openingDateStr);
+      return;
+    }
+    const [diaStr, mesStr, añoStr] = partes;
+    const dia = Number(diaStr);
+    const mes = Number(mesStr);
+    const año = Number(añoStr);
+    if (
+      Number.isNaN(dia) ||
+      Number.isNaN(mes) ||
+      Number.isNaN(año) ||
+      dia < 1 || dia > 31 ||
+      mes < 1 || mes > 12
+    ) {
+      console.error('Valores inválidos en REACT_APP_OPENING_DATE:', openingDateStr);
+      return;
+    }
+    // JavaScript: meses 0–11
+    const fechaObj = new Date(año, mes - 1, dia);
+    // Opcional: si necesitas hora específica, p. ej. 10:00:
+    fechaObj.setHours(hourOpeningDateStr, 0, 0, 0);
+
+    setTargetDate(fechaObj);
+  }, []);
+    
 
   useEffect(() => {
     const style = document.createElement('style');
@@ -48,13 +87,13 @@ export default function TimeCounter() {
     };
   }, []);
 
-  useEffect(() => {
-    const now = new Date();
-    // Establece la fecha objetivo al 28 de julio del 2025
-    now.setFullYear(2025, 5, 28);
-    now.setHours(10, 0, 0, 0);
-    setTargetDate(now);
-  }, []);
+  // useEffect(() => {
+  //   const now = new Date();
+  //   // Establece la fecha objetivo al 28 de julio del 2025
+  //   now.setFullYear(2025, 5, 20);
+  //   now.setHours(10, 0, 0, 0);
+  //   setTargetDate(now);
+  // }, []);
 
   useEffect(() => {
     if (!targetDate) return;
@@ -78,7 +117,7 @@ export default function TimeCounter() {
       // Redirige después de 2 segundos
       setTimeout(() => {
         navigate("/"); // Cambia "/" por la ruta deseada
-      }, 2000);
+      }, 5000);
       return;
     }
 

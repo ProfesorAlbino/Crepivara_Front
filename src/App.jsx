@@ -7,7 +7,6 @@ function App() {
   return (
     <ThemeProvider>
       <div className="App">
-        <Navbar />
         {/* Rest of your app components */}
       </div>
     </ThemeProvider>
