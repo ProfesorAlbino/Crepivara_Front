@@ -1,8 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  //baseURL: "https://localhost:7173/", // URL Local
-  baseURL: "https://formdesing.somee.com", // URL Web
+  baseURL: process.env.REACT_APP_URL_BACKEND, // URL Web
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",

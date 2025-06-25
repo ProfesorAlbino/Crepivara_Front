@@ -175,7 +175,7 @@ export default function TimeCounter() {
       <div className="countdown-container">
         <div className="countdown-card">
           <div className="countdown-header">
-            <div className="crepe-icon"><img src="../images/Logo.webp" alt="CrepiVara"/></div>
+            <div className="crepe-icon"><img src="../images/Logo.webp" alt="CrepiVara" className="img-time-counter"/></div>
             <h1 className="countdown-title">¡Gran Apertura!</h1>
             <p className="countdown-subtitle">Nuestra deliciosa crepería abrirá muy pronto</p>
           </div>

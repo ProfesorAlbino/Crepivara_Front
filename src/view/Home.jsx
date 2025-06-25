@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/view/HomeStyle.css";
 import { Link } from "react-router-dom";
+import WaveDivider1 from "../components/wave/WaveDivider1";
 
 export default function Home() {
   return (
@@ -10,9 +11,7 @@ export default function Home() {
           <div className="hero-content fade-in">
             <h1>CrepyVara</h1>
             <p>
-              Deliciosas crepas artesanales hechas con amor y los ingredientes
-              más frescos. Una experiencia única que combina sabor, calidad y la
-              ternura de nuestro capybara mascota.
+              Deliciosas crepas artesanales hechas con amor…
             </p>
             <div className="cta-buttons">
               <Link to="/menu" className="btn btn-primary" id="ver-menu">
@@ -24,6 +23,12 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </section>
+
+      <WaveDivider1 />
+
+      <section id="resto" className="container-fluid py-5">
+        {/* … resto de tu contenido … */}
       </section>
     </>
   );
