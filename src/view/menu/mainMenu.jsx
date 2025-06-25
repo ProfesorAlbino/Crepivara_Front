@@ -4,9 +4,6 @@ import CardMenu from '../../components/cards/CardMenu';
 
 export default function MainMenu() {
 
-  const imagenes = ["https://i.blogs.es/b45e35/como-hacer-masa-para-crepas-3-/1366_2000.jpg", "https://cdn7.kiwilimon.com/recetaimagen/13571/960x640/6052.png.jpg"];
-  const ingredientes = ["arina", "huevo", "leche", "sal", "azucar"];
-
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
