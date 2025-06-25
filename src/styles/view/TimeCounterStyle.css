@@ -1,9 +1,4 @@
-        body {
-            font-family: var(--font-family--1);
-            background: linear-gradient(135deg, var(--background-color-1) 0%, var(--background-color-2) 100%);
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
+
 
         /* Elementos decorativos de fondo */
         .floating-elements {
