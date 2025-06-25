@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getProducts } from '../../service/Products'
 import CardMenu from '../../components/cards/CardMenu';
+import "../../styles/view/MainMenuStyle.css"; // Asegúrate de tener el CSS adecuado
 
 export default function MainMenu() {
 
@@ -22,7 +23,20 @@ export default function MainMenu() {
 
   return (
     <>
-    <div>mainMenu</div>
+    <div className="main-menu-header">
+      <div className="title-container">
+        <h1 className="main-title">
+          <span className="title-accent">Nuestro</span>
+          <span className="title-main">Menú</span>
+        </h1>
+        <div className="title-decoration">
+          <div className="decoration-line"></div>
+          <div className="decoration-dot"></div>
+          <div className="decoration-line"></div>
+        </div>
+        <p className="title-subtitle">Descubre sabores únicos creados con pasión</p>
+      </div>
+    </div>
 
     <div className="row">
 

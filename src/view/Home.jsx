@@ -25,8 +25,6 @@ export default function Home() {
         </div>
       </section>
 
-      <WaveDivider1 />
-
       <section id="resto" className="container-fluid py-5">
         {/* … resto de tu contenido … */}
       </section>
