@@ -1,7 +1,6 @@
 import React from "react";
 import "../styles/view/HomeStyle.css";
 import { Link } from "react-router-dom";
-import WaveDivider1 from "../components/wave/WaveDivider1";
 
 export default function Home() {
   return (
