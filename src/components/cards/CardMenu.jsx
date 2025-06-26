@@ -7,7 +7,8 @@ const CardMenu = ({
   precio, 
   imagenes = [], 
   ingredientes = [], 
-  disponible = true 
+  disponible = true ,
+  categoria
 }) => {
   const [imagenActual, setImagenActual] = useState(0);
 
@@ -31,7 +32,7 @@ const CardMenu = ({
           {imagenes.length > 0 && (
             <>
               <img
-                src={imagenes[imagenActual].image_url
+                src={imagenes[imagenActual]
 }
                 className="card-img-top img-card-menu"
                 alt={imagenes[imagenActual].alt_text|| 'Imagen del producto'}
@@ -83,6 +84,10 @@ const CardMenu = ({
             <span className="price-tag">₡{precio}</span>
           </div>
 
+          <div className="category-tag  mb-3">
+            <span className="badge badge-category">{categoria}</span>
+          </div>
+
           {/* Descripción */}
           <p className="card-text description mb-3">{descripcion}</p>
 
@@ -96,7 +101,7 @@ const CardMenu = ({
           key={i}
           className="ingredient-tag"
         >
-          {ing.name}
+          {ing}
         </span>
       ))}
     </div>
