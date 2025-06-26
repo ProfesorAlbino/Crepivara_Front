@@ -3,6 +3,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import '../styles/layout/UserLayoutStyle.css';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer'; // Uncomment if you want to use Footer
 
 const UserLayout = () => {
   return (
@@ -27,7 +28,7 @@ const UserLayout = () => {
       </main>
 
       <footer>
-        {/* <Footer /> */}
+        <Footer />
       </footer>
     </div>
   );

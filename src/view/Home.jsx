@@ -136,6 +136,67 @@ export default function Home() {
             </div>
         </div>
     </section>
+
+
+    <div className="container-fluid wave2">
+  <svg viewBox="0 0 1536 200">
+    <path
+      fill="var(--background-color-2"
+      d="M 0 0 C 99.5 0 99.5 28 199 28 L 199 28 L 199 0 L 0 0 Z"
+      strokeWidth="0"
+    ></path>
+    <path
+      fill="var(--background-color-2"
+      d="M 198 28 C 300 28 300 120 402 120 L 402 120 L 402 0 L 198 0 Z"
+      strokeWidth="0"
+    ></path>
+    <path
+      fill="var(--background-color-2"
+      d="M 401 120 C 509 120 509 202 617 202 L 617 202 L 617 0 L 401 0 Z"
+      strokeWidth="0"
+    ></path>
+    <path
+      fill="var(--background-color-2"
+      d="M 616 202 C 672.5 202 672.5 94 729 94 L 729 94 L 729 0 L 616 0 Z"
+      strokeWidth="0"
+    ></path>
+    <path
+      fill="var(--background-color-2"
+      d="M 728 94 C 781 94 781 174 834 174 L 834 174 L 834 0 L 728 0 Z"
+      strokeWidth="0"
+    ></path>
+    <path
+      fill="var(--background-color-2"
+      d="M 833 174 C 881 174 881 110 929 110 L 929 110 L 929 0 L 833 0 Z"
+      strokeWidth="0"
+    ></path>
+    <path
+      fill="var(--background-color-2"
+      d="M 928 110 C 963 110 963 149 998 149 L 998 149 L 998 0 L 928 0 Z"
+      strokeWidth="0"
+    ></path>
+    <path
+      fill="var(--background-color-2"
+      d="M 997 149 C 1073 149 1073 203 1149 203 L 1149 203 L 1149 0 L 997 0 Z"
+      strokeWidth="0"
+    ></path>
+    <path
+      fill="var(--background-color-2"
+      d="M 1148 203 C 1218.5 203 1218.5 110 1289 110 L 1289 110 L 1289 0 L 1148 0 Z"
+      strokeWidth="0"
+    ></path>
+    <path
+      fill="var(--background-color-2"
+      d="M 1288 110 C 1342 110 1342 167 1396 167 L 1396 167 L 1396 0 L 1288 0 Z"
+      strokeWidth="0"
+    ></path>
+    <path
+      fill="var(--background-color-2"
+      d="M 1395 167 C 1460.5 167 1460.5 0 1526 0 L 1526 0 L 1526 0 L 1395 0 Z"
+      strokeWidth="0"
+    ></path>
+  </svg>
+</div>
     </>
   );
 }

@@ -110,6 +110,21 @@
  }
 }
 
+.wave2 {
+ display: block;
+ position: relative;
+ height: 200px;
+ background-size: cover;
+ transform: rotateY(180deg);
+ background-color: var(--background-color-4);
+}
+
+@media (max-width:1535px) {
+ .wave2 {
+   background-size: contain;
+ }
+}
+
 /* Sección Destacados */
         .destacados-section {
             background-color: var(--background-color-2);

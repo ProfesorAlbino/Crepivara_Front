@@ -3,6 +3,7 @@
   --background-color-1: #f3e8ff; /* Fondo principal, púrpura muy suave y claro */
   --background-color-2: #e9d5ff; /* Fondo secundario, ligeramente más oscuro */
   --background-color-3: #ffffff; /* Fondo terciario blanco para contraste */
+  --background-color-4: #d0bbff; /* Fondo adicional, púrpura muy claro */
 
   /* Colores de Texto */
   --text-color-1: #4c1d95; /* Texto principal púrpura oscuro */
@@ -41,6 +42,7 @@
   --background-color-1: #2d2d3a; /* Fondo principal oscuro */
   --background-color-2: #212129; /* Fondo secundario aún más oscuro */
   --background-color-3: #1a1a23; /* Fondo terciario */
+  --background-color-4: #484863; /* Fondo adicional muy oscuro */
 
   --text-color-1: #f3e8ff; /* Texto principal claro */
   --text-color-2: #e9d5ff; /* Texto secundario */
