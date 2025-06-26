@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import CardMenu from '../../components/cards/CardMenu';
 import "../../styles/view/MainMenuStyle.css"; // Asegúrate de tener el CSS adecuado
+import { ReceiptText, Candy, PartyPopper, Vegan, Activity  } from 'lucide-react';
 
 // Define tus productos aquí para mantener las rutas y clases existentes
 const PRODUCTS = [
@@ -31,7 +32,7 @@ const PRODUCTS = [
     precio: "3,500",
     imagenes: ["/images/menuImages/crepas/Cafecrepivara.webp"],
     ingredientes: ["Nutella", "Plátano", "Fresas"],
-    disponible: true,
+    disponible: false,
     categoria: "salados", // ajusta según corresponda
   },
   {
@@ -43,16 +44,16 @@ const PRODUCTS = [
     ingredientes: ["Nutella", "Plátano", "Fresas"],
     disponible: true,
     categoria: "especiales", // ajusta según corresponda
-  },
+  }
 ];
 
 const CATEGORIES = [
-  { key: 'todos', label: 'Todos', icon: 'fas fa-th-large' },
-  { key: 'dulces', label: 'Dulces', icon: 'fas fa-candy-cane' },
-  { key: 'salados', label: 'Salados', icon: 'fas fa-cheese' },
-  { key: 'especiales', label: 'Especiales', icon: 'fas fa-crown' },
-  { key: 'veganos', label: 'Veganos', icon: 'fas fa-leaf' },
-  { key: 'fitness', label: 'Fitness', icon: 'fas fa-dumbbell' },
+  { key: 'todos', label: 'Todos', icon: <ReceiptText /> },
+  { key: 'dulces', label: 'Dulces', icon: <Candy /> },
+  { key: 'salados', label: 'Salados', icon: <ReceiptText /> },
+  { key: 'especiales', label: 'Especiales', icon: <PartyPopper /> },
+  { key: 'veganos', label: 'Veganos', icon: <Vegan /> },
+  { key: 'fitness', label: 'Fitness', icon: <Activity /> },
 ];
 
 export default function MainMenu() {
@@ -121,7 +122,7 @@ export default function MainMenu() {
                         type="button"
                       >
                         <div className="btn-icon">
-                          <i className={icon}></i>
+                          {icon}
                         </div>
                         <span className="btn-text">{label}</span>
                         <div className="btn-count">{count}</div>

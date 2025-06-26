@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import "../../styles/components/cards/CardMenuStyle.css"; // Asegúrate de tener el CSS adecuado
+import { ArrowRight, ArrowLeft } from "lucide-react";
 
-const CardMenu = ({ 
-  nombre, 
-  descripcion, 
-  precio, 
-  imagenes = [], 
-  ingredientes = [], 
-  disponible = true ,
-  categoria
+const CardMenu = ({
+  nombre,
+  descripcion,
+  precio,
+  imagenes = [],
+  ingredientes = [],
+  disponible = true,
+  categoria,
 }) => {
   const [imagenActual, setImagenActual] = useState(0);
+  const [agregado, setAgregado] = useState(false);
 
   const cambiarImagen = (indice) => {
     setImagenActual(indice);
@@ -24,6 +26,34 @@ const CardMenu = ({
     setImagenActual((prev) => (prev - 1 + imagenes.length) % imagenes.length);
   };
 
+  //Agregar al carrito (localStorage)
+  const agregarAlCarrito = () => {
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    console.log("Carrito actual:", carrito);
+    //Verificar que este disponible
+    if (!disponible) {
+      return;
+    }
+
+    const producto = {
+      nombre,
+      descripcion,
+      precio,
+      imagen: imagenes[imagenActual],
+      ingredientes,
+      disponible,
+      categoria,
+    };
+
+    carrito.push(producto);
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+
+    setAgregado(true);
+    setTimeout(() => {
+      setAgregado(false);
+    }, 2000);
+  };
+
   return (
     <div className="menu-card">
       <div className="card h-100">
@@ -32,10 +62,9 @@ const CardMenu = ({
           {imagenes.length > 0 && (
             <>
               <img
-                src={imagenes[imagenActual]
-}
+                src={imagenes[imagenActual]}
                 className="card-img-top img-card-menu"
-                alt={imagenes[imagenActual].alt_text|| 'Imagen del producto'}
+                alt={imagenes[imagenActual].alt_text || "Imagen del producto"}
               />
               {imagenes.length > 1 && (
                 <>
@@ -44,20 +73,26 @@ const CardMenu = ({
                     onClick={anteriorImagen}
                     type="button"
                   >
-                    <i className="bi bi-chevron-left"></i>
+                    <i className="bi bi-chevron-left">
+                      <ArrowLeft />
+                    </i>
                   </button>
                   <button
                     className="btn-nav btn-nav-next"
                     onClick={siguienteImagen}
                     type="button"
                   >
-                    <i className="bi bi-chevron-right"></i>
+                    <i className="bi bi-chevron-right">
+                      <ArrowRight />
+                    </i>
                   </button>
                   <div className="image-indicators">
                     {imagenes.map((_, index) => (
                       <button
                         key={index}
-                        className={`indicator ${index === imagenActual ? 'active' : ''}`}
+                        className={`indicator ${
+                          index === imagenActual ? "active" : ""
+                        }`}
                         onClick={() => cambiarImagen(index)}
                         type="button"
                       />
@@ -67,11 +102,15 @@ const CardMenu = ({
               )}
             </>
           )}
-          
+
           {/* Badge de disponibilidad */}
           <div className="availability-badge">
-            <span className={`badge ${disponible ? 'badge-available' : 'badge-unavailable'}`}>
-              {disponible ? 'Disponible' : 'No Disponible'}
+            <span
+              className={`badge ${
+                disponible ? "badge-available" : "badge-unavailable"
+              }`}
+            >
+              {disponible ? "Disponible" : "No Disponible"}
             </span>
           </div>
         </div>
@@ -92,31 +131,38 @@ const CardMenu = ({
           <p className="card-text description mb-3">{descripcion}</p>
 
           {/* Ingredientes */}
-{ingredientes.length > 0 && (
-  <div className="ingredients-section mb-3">
-    <h6 className="ingredients-title fw-bold">Ingredientes:</h6>
-    <div className="ingredients-list gap-2">
-      {ingredientes.map((ing, i) => (
-        <span
-          key={i}
-          className="ingredient-tag"
-        >
-          {ing}
-        </span>
-      ))}
-    </div>
-  </div>
-)}
+          {ingredientes.length > 0 && (
+            <div className="ingredients-section mb-3">
+              <h6 className="ingredients-title fw-bold">Ingredientes:</h6>
+              <div className="ingredients-list gap-2">
+                {ingredientes.map((ing, i) => (
+                  <span key={i} className="ingredient-tag">
+                    {ing}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Botón de acción */}
-          <div className="mt-auto">
-            <button 
-              className={`btn btn-action w-100 ${!disponible ? 'disabled' : ''}`}
-              disabled={!disponible}
-            >
-              {disponible ? 'Agregar al Carrito' : 'No Disponible'}
-            </button>
-          </div>
+         <div className="mt-auto">
+      <button
+  onClick={agregarAlCarrito}
+  type="button"
+  className={`btn btn-action w-100 ${
+    !disponible ? "disabled" : ""
+  } ${agregado ? "agregado" : ""}`}
+  disabled={!disponible}
+>
+  {disponible
+    ? agregado
+      ? "Orden Agregada"
+      : "Agregar a la Orden"
+    : "No Disponible"}
+</button>
+    </div>
+
+
         </div>
       </div>
     </div>

@@ -20,7 +20,7 @@ export default function Navbar() {
           alt="logo"
           className="navbar-brand-logo"
         />
-        <span className="navbar-brand-title">Crepivara</span>
+        <span className="navbar-brand-title">CrepiVara</span>
       </Link>
             <div className="d-flex align-items-center">
                 <DarkMode />
@@ -49,6 +49,9 @@ export default function Navbar() {
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" to="#contacto" onClick={handleNavClick}>Contacto</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/orders" onClick={handleNavClick}>Órdenes</Link>
                     </li>
                 </ul>
             </div>

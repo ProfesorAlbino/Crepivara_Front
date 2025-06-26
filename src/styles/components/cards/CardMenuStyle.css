@@ -219,6 +219,7 @@
   background: var(--accent-2);
   color: var(--text-color-1);
   transform: translateY(-1px);
+  transition: all 0.3s ease;
 }
 
 /* Botón de acción */
@@ -256,6 +257,21 @@
   transform: none;
   box-shadow: 0 4px 16px rgba(231, 76, 60, 0.3);
 }
+
+/*Cuando clickee el boton se ponga orden agregada*/
+.btn-action.agregado {
+  background: linear-gradient(135deg, #28a745, #218838);
+  color: white;
+  background-color: #28a745; /* verde tipo éxito */
+  transform: scale(1.05);
+}
+
+.btn-action.agregado:hover {
+  background: linear-gradient(135deg, #218838, #1e7e34);
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(40, 167, 69, 0.4);
+}
+
 
 /* Responsividad */
 @media (max-width: 768px) {

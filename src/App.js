@@ -6,6 +6,7 @@ import Login from "./view/auth/Login";
 import Register from "./view/auth/Register";
 import Home from "./view/Home";
 import AdminHome from "./view/admin/AdminHome";
+import OrderHome from "./view/order/OrderHome";
 
 import "./index.css";
 import MainMenu from "./view/menu/mainMenu";
@@ -109,6 +110,10 @@ function App() {
           <Route
             path="/menu"
             element={<MainMenu />}
+          />
+          <Route
+            path="/orders"
+            element={<OrderHome />} // Aquí podrías poner un componente de órdenes si lo tienes
           />
         </Route>
 
