@@ -1,0 +1,190 @@
+/* Card principal */
+.cart-card {
+  background: var(--surface-glass);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(124, 58, 237, 0.1);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.cart-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(124, 58, 237, 0.15);
+}
+
+.cart-card.removed {
+  transform: scale(0);
+  opacity: 0;
+}
+
+/* Imagen del producto */
+.cart-card-img {
+  width: 100%;
+  max-width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid var(--border-color);
+}
+
+/* Información del producto */
+.crepe-name {
+  color: var(--text-color-1);
+  font-weight: 600;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  margin-bottom: 4px;
+}
+
+.crepe-price {
+  color: var(--featured-1);
+  font-weight: 700;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+}
+
+.total-price {
+  color: var(--text-color-2);
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+.total-price-mobile {
+  color: var(--text-color-2);
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+/* Controles de cantidad */
+.quantity-controls {
+  background: var(--background-color-3);
+  border-radius: 25px;
+  border: 1px solid var(--border-color);
+  padding: 4px 8px;
+}
+
+.quantity-btn {
+  background: var(--featured-1);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.quantity-btn:hover {
+  background: var(--featured-2);
+  transform: scale(1.05);
+}
+
+.quantity-btn:active {
+  transform: scale(0.95);
+}
+
+.quantity-btn.disabled {
+  background: var(--accent-2);
+  cursor: not-allowed;
+}
+
+.quantity-btn.disabled:hover {
+  background: var(--accent-2);
+  transform: none;
+}
+
+.quantity-display {
+  color: var(--text-color-1);
+  font-weight: 600;
+  font-size: 1rem;
+  min-width: 30px;
+  text-align: center;
+}
+
+/* Botón eliminar */
+.remove-btn {
+  background: var(--error-1);
+  border: none;
+  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  color: white;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-btn:hover {
+  background: var(--error-2);
+  transform: scale(1.05);
+}
+
+.remove-btn:active {
+  transform: scale(0.95);
+}
+
+.cuantity-number {
+  color: var(--text-color-1);
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 0 8px;
+}
+
+.quantity-number {
+  color: var(--text-color-1);
+  font-weight: 300;
+  font-size: 1rem;
+  margin: 0 8px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 575.98px) {
+  .cart-card-img {
+    max-width: 60px;
+    height: 60px;
+  }
+  
+  .crepe-name {
+    font-size: 0.9rem;
+  }
+  
+  .crepe-price {
+    font-size: 1rem;
+  }
+  
+  .quantity-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+  
+  .remove-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+  
+
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .cart-card-img {
+    max-width: 70px;
+    height: 70px;
+  }
+}
+
+@media (min-width: 768px) {
+  .cart-card:hover {
+    transform: translateY(-4px);
+  }
+}

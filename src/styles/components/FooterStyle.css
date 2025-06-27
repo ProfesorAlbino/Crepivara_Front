@@ -4,6 +4,8 @@
     padding: 3rem 0 1rem;
     position: relative;
     overflow: hidden;
+    /*aparesca al final de la pagina*/
+    flex-shrink: 0;
 }
 
 

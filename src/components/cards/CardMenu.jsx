@@ -27,14 +27,22 @@ const CardMenu = ({
   };
 
   //Agregar al carrito (localStorage)
-  const agregarAlCarrito = () => {
-    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    console.log("Carrito actual:", carrito);
-    //Verificar que este disponible
-    if (!disponible) {
-      return;
-    }
+const agregarAlCarrito = () => {
+  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
+  // Verificar que esté disponible
+  if (!disponible) {
+    return;
+  }
+
+  // Buscar si el producto ya está en el carrito
+  const idx = carrito.findIndex(p => p.nombre === nombre);
+
+  if (idx >= 0) {
+    // Si ya existe, aumentar la cantidad
+    carrito[idx].cantidad += 1;
+  } else {
+    // Si no existe, crear uno nuevo con cantidad inicial 1
     const producto = {
       nombre,
       descripcion,
@@ -43,16 +51,19 @@ const CardMenu = ({
       ingredientes,
       disponible,
       categoria,
+      cantidad: 1
     };
-
     carrito.push(producto);
-    localStorage.setItem("carrito", JSON.stringify(carrito));
+  }
 
-    setAgregado(true);
-    setTimeout(() => {
-      setAgregado(false);
-    }, 2000);
-  };
+  // Guardar de nuevo en localStorage
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+
+  setAgregado(true);
+  setTimeout(() => {
+    setAgregado(false);
+  }, 2000);
+};
 
   return (
     <div className="menu-card">
@@ -120,11 +131,11 @@ const CardMenu = ({
           {/* Título y precio */}
           <div className="d-flex justify-content-between align-items-start mb-3">
             <h5 className="card-title mb-0">{nombre}</h5>
-            <span className="price-tag">₡{precio}</span>
+            <h3 className="price-tag">₡{precio}</h3>
           </div>
 
           <div className="category-tag  mb-3">
-            <span className="badge badge-category">{categoria}</span>
+            <h3 className="badge badge-category">{categoria}</h3>
           </div>
 
           {/* Descripción */}
