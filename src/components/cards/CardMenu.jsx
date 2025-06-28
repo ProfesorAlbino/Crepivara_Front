@@ -10,6 +10,7 @@ const CardMenu = ({
   ingredientes = [],
   disponible = true,
   categoria,
+  id,
 }) => {
   const [imagenActual, setImagenActual] = useState(0);
   const [agregado, setAgregado] = useState(false);
@@ -51,7 +52,8 @@ const agregarAlCarrito = () => {
       ingredientes,
       disponible,
       categoria,
-      cantidad: 1
+      cantidad: 1,
+      id
     };
     carrito.push(producto);
   }

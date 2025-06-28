@@ -24,3 +24,47 @@ main{
     background-color: var(--featured-2);
     transform: scale(1.1);
 }
+
+.svg-shopping{
+    position: fixed;
+    bottom: 2%;
+    right: 5px;
+    margin-bottom: 5%;
+    width: 60px;
+    height: 60px;
+    background-color: var(--featured-2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.svg-shopping:hover {
+    background-color: var(--featured-1);
+    transform: scale(1.1);
+}
+
+@media screen and (max-width: 768px) {
+    
+    .svg-shopping {
+        bottom: 10%;
+    } 
+}
+
+@media screen and (max-width: 855px) {
+    
+    .svg-shopping {
+        bottom: 4%;
+    } 
+}
+
+@media screen and (max-width: 431px) {
+    
+    .svg-shopping {
+        bottom: 10%;
+    } 
+}

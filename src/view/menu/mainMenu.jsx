@@ -159,6 +159,7 @@ export default function MainMenu() {
               ingredientes={item.ingredientes}
               disponible={item.disponible}
               categoria={item.categoria}
+              id={item.id}
               className="mt-3 mb-3"
             />
           </div>
