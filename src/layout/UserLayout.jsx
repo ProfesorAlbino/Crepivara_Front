@@ -1,5 +1,5 @@
 // src/layout/UserLayout.jsx
-import React, {useState} from "react";
+import React from "react";
 import { Outlet } from "react-router-dom";
 import "../styles/layout/UserLayoutStyle.css";
 import Navbar from "../components/Navbar";
@@ -8,12 +8,6 @@ import { ShoppingCart } from "lucide-react";
 import { Link } from "react-router-dom"; // Import Link for navigation
 
 const UserLayout = () => {
-
-   const [isOpen, setIsOpen] = useState(false);
-  
-    const handleNavClick = () => {
-      setIsOpen(false);
-    };
 
 
   return (
@@ -26,7 +20,7 @@ const UserLayout = () => {
         <Outlet />
 
         <div className="svg-shopping">
-          <Link to="/orders" onClick={ handleNavClick }>
+          <Link to="/orders">
            <ShoppingCart style={{ color: "white" }} />
          </Link>
         </div>
