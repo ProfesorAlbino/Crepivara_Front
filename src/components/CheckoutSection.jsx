@@ -10,15 +10,42 @@ export default function CheckoutSection({
 }) {
   const [isProcessing, setIsProcessing] = useState(false);
   const total = subtotal + deliveryFee;
+  const [numTable, setNumTable] = useState(0);
+  const [name, setName] = useState('');
 
   const handleOrder = () => {
     setIsProcessing(true);
+
+    const whatsappText = generateWhatsAppMessage();
+    const whatsappUrl = `https://wa.me/${process.env.REACT_APP_NUMBER}?text=${whatsappText}`;
+    window.open(whatsappUrl, '_blank');
+
     setTimeout(() => {
       setIsProcessing(false);
       onOrder();
       alert('¡Pedido realizado con éxito!');
     }, 2000);
   };
+
+  const generateWhatsAppMessage = () => {
+  const cart = JSON.parse(localStorage.getItem('carrito') || '[]');
+
+  const productLines = cart
+    .map(item => `• ${item.nombre}: ₡${item.precio.toLocaleString()} ${item.cantidad || 1} unidad(es)`)
+    .join('\n');
+
+  const total = cart.reduce((sum, item) => sum + item.precio * (item.cantidad || 1), 0);
+
+  // 4. Compone el mensaje final
+  return encodeURIComponent(
+    'Hola, mi nombre es ' + name + '.\n\n' +
+    `Nuevo Pedido*\n\n` +
+    `${productLines}\n\n` +
+    `*Total:* ₡${total.toLocaleString()}\n` +
+    `*Mesa:* ${numTable}\n\n` +
+    `¡Muchas gracias!`
+  );
+};
 
   return (
     <div className="container-fluid">
@@ -52,7 +79,38 @@ export default function CheckoutSection({
                     ₡{total.toLocaleString()}
                   </h3>
                 </div>
+
+                <div className="name-input mt-3">
+                  <label htmlFor="name" className="form-label">Ingrese su Nombre</label>
+                  <input
+                    type="text"
+                    id="name"
+                    className="form-control"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Nombre del cliente"
+                    required
+                    autoFocus
+                  />
+                </div>
+
+                <div className="table-number-input mt-3">
+                  <label htmlFor="tableNumber" className="form-label">Ingrese el número de Mesa</label>
+                  <input
+                    type="number"
+                    id="tableNumber"
+                    className="form-control"
+                    value={numTable}
+                    onChange={(e) => setNumTable(Number(e.target.value))}
+                    min="0"
+                    placeholder="Número de mesa"
+                    required
+                  />
+                </div>
+
+                
               </div>
+
 
               <div className="order-button-container">
                 <button
