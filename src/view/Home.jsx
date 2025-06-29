@@ -1,44 +1,75 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "../styles/view/HomeStyle.css";
 import { Link } from "react-router-dom";
+import { useInView } from "react-intersection-observer";
 
 export default function Home() {
+  // Asegúrate de que apunten a rutas válidas en tu carpeta "public/images"
+  const images = [
+    "/images/Logo.webp",
+    "/images/home/foto1.webp",
+    "/images/home/foto2.webp",
+  ];
+
+  const [current, setCurrent] = useState(0);
+  const [loaded, setLoaded] = useState(false);
+  const timeoutRef = useRef(null);
+  // Intervalo en milisegundos
+  const intervalMs = 4000;
+
+  const { ref: inViewRef, inView } = useInView({ triggerOnce: true });
+
+  useEffect(() => {
+    if (!inView) return;
+    // Programa el cambio de imagen tras intervalMs
+    timeoutRef.current = setTimeout(() => {
+      setLoaded(false);
+      setCurrent((i) => (i + 1) % images.length);
+    }, intervalMs);
+    return () => clearTimeout(timeoutRef.current);
+  }, [current, inView, intervalMs, images.length]);
+
   return (
     <>
-      <section id="home" className="hero container-fluid d-flex align-items-center">
-  <div className="container">
-    <div className="row justify-content-center align-items-center">
-      
-      {/* Texto y botones */}
-      <div className="col-12 col-md-6 d-flex flex-column align-items-center mb-5 mb-md-0">
-        <h1 className="hero-title text-center">CrepyVara</h1>
-        <p className="hero-subtitle text-center">Deliciosas crepas artesanales hechas con amor…</p>
+      <section
+        id="home"
+        className="hero container-fluid d-flex align-items-center"
+      >
+        <div className="container">
+          <div className="row justify-content-center align-items-center">
+            {/* Texto y botones */}
+            <div className="col-12 col-md-6 d-flex flex-column align-items-center mb-5 mb-md-0">
+              <h1 className="hero-title text-center">CrepyVara</h1>
+              <p className="hero-subtitle text-center">
+                Deliciosas crepas artesanales hechas con amor…
+              </p>
+              <div className="cta-buttons d-flex gap-2">
+                <Link to="/menu" className="btn btn-primary btn-md">
+                  Ver Menú
+                </Link>
+                <Link to="/reservas" className="btn btn-secondary btn-md">
+                  Hacer Reserva
+                </Link>
+              </div>
+            </div>
 
-        <div className="cta-buttons d-flex gap-2">
-          <Link to="/menu" className="btn btn-primary btn-md">
-            Ver Menú
-          </Link>
-          <Link to="/reservas" className="btn btn-secondary btn-md">
-            Hacer Reserva
-          </Link>
+            {/* Slider */}
+            <div className="col-12 col-md-6 d-flex justify-content-center">
+              <div ref={inViewRef} className="logo-wrapper slow-fade-slider">
+                {inView && (
+                  <img
+                    key={current}
+                    src={images[current]}
+                    alt={`Slide ${current + 1}`}
+                    className={`slide-img ${loaded ? "visible" : ""}`}
+                    onLoad={() => setLoaded(true)}
+                  />
+                )}
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-
-      {/* Logo */}
-      <div className="col-12 col-md-6 d-flex justify-content-center">
-        <div className="logo-wrapper">
-          <img
-            src="/images/Logo.webp"
-            alt="Logo CrepyVara"
-            className="img-fluid img-home"
-          />
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
+      </section>
 
       <div className="container-fluid wave1">
         {/* Elimina xmlns y xmlns:xlink */}

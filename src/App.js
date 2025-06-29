@@ -7,6 +7,8 @@ import Register from "./view/auth/Register";
 import Home from "./view/Home";
 import AdminHome from "./view/admin/AdminHome";
 import OrderHome from "./view/order/OrderHome";
+import ScrollConfig from "./js/ScrollConfig";
+import AboutUs from "./view/aboutUs/AboutUs";
 
 import "./index.css";
 import MainMenu from "./view/menu/mainMenu";
@@ -92,6 +94,7 @@ const AdminLayoutWrapper = () => (
 function App() {
   return (
     <Router>
+      <ScrollConfig />
       <Routes>
         {/* Ruta para TimeCounter: si ya pasó la fecha, redirigimos a "/" */}
         <Route
@@ -115,8 +118,11 @@ function App() {
             path="/orders"
             element={<OrderHome />} // Aquí podrías poner un componente de órdenes si lo tienes
           />
+          <Route
+          path="/aboutus"
+          element={<AboutUs/>}
+          />
         </Route>
-
         {/* Rutas de autenticación */}
         <Route path="/login" element={
           // Si ya pasó el tiempo y ya autenticado, quizá redirigir al home o admin?
