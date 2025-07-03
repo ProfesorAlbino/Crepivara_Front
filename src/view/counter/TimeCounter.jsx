@@ -269,7 +269,7 @@ export default function TimeCounter() {
               Cómo llegar
             </a>
             <a 
-              href="tel:+50612345678" 
+              href={`tel:+506${process.env.REACT_APP_NUMBER}`}
               className="map-btn map-btn-secondary"
             >
               <i className="fas fa-phone"></i>
