@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import CardMenu from '../../components/cards/CardMenu';
 import "../../styles/view/MainMenuStyle.css"; // Asegúrate de tener el CSS adecuado
-import { ReceiptText, Candy, PartyPopper, Vegan, Activity  } from 'lucide-react';
+import { ReceiptText, Candy, PartyPopper} from 'lucide-react';
 
 // Define tus productos aquí para mantener las rutas y clases existentes
 const PRODUCTS = [
@@ -13,7 +13,7 @@ const PRODUCTS = [
     imagenes: ["/images/menuImages/crepas/Banavara.webp"],
     ingredientes: ["Nutella", "Plátano", "Fresas"],
     disponible: true,
-    categoria: "todos",
+    categoria: "Bebidas Frías",
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ const PRODUCTS = [
     imagenes: ["/images/menuImages/crepas/Berryvara.webp"],
     ingredientes: ["Nutella", "Plátano", "Fresas"],
     disponible: true,
-    categoria: "dulces",
+    categoria: "Bebidas Frías",
   },
   {
     id: 3,
@@ -33,7 +33,7 @@ const PRODUCTS = [
     imagenes: ["/images/menuImages/crepas/Cafecrepivara.webp"],
     ingredientes: ["Nutella", "Plátano", "Fresas"],
     disponible: false,
-    categoria: "salados", // ajusta según corresponda
+    categoria: "Bebidas Calientes", // ajusta según corresponda
   },
   {
     id: 4,
@@ -43,17 +43,165 @@ const PRODUCTS = [
     imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
     ingredientes: ["Nutella", "Plátano", "Fresas"],
     disponible: true,
-    categoria: "especiales", // ajusta según corresponda
+    categoria: "Bebidas Frías", // ajusta según corresponda
+  },
+  {
+    id: 5,
+    nombre: "CAPIBERRY",
+    descripcion: "Deliciosa crepe rellena con Nutella auténtica, plátano fresco y fresas, decorada con azúcar glass y crema batida.",
+    precio: 1900,
+    imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
+    ingredientes: ["2 frutas", "Jarabe", "Topping"],
+    disponible: true,
+    categoria: "Crepas",
+  },
+  {
+    id: 6,
+    nombre: "CREPA SIN FRUTA",
+    descripcion: "Deliciosa crepe rellena con Nutella auténtica, plátano fresco y fresas, decorada con azúcar glass y crema batida.",
+    precio: 2400,
+    imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
+    ingredientes: ["Helado", "Topping", "Jarabe"],
+    disponible: true,
+    categoria: "Crepas",
+  },
+  {
+    id: 7,
+    nombre: "TROPICALVARA",
+    descripcion: "Deliciosa crepe rellena con Nutella auténtica, plátano fresco y fresas, decorada con azúcar glass y crema batida.",
+    precio: 2900,
+    imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
+    ingredientes: ["Banano", "Fresas", "Helado", "Jarabe"],
+    disponible: true,
+    categoria: "Crepas",
+  },
+  {
+    id: 8,
+    nombre: "CAPIDULZURA",
+    descripcion: "Deliciosa crepe rellena con Nutella auténtica, plátano fresco y fresas, decorada con azúcar glass y crema batida.",
+    precio: 3400,
+    imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
+    ingredientes: ["Melocotón", "Fresa", "Helado", "Nutella"],
+    disponible: true,
+    categoria: "Crepas",
+  },
+  {
+    id: 9,
+    nombre: "CAPIOREO",
+    descripcion: "Deliciosa crepe rellena con Nutella auténtica, plátano fresco y fresas, decorada con azúcar glass y crema batida.",
+    precio: 4500,
+    imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
+    ingredientes: ["2 frutas", "Helado", "Oreo", "Jarabe", "Toppin"],
+    disponible: true,
+    categoria: "Crepas",
+  },
+  {
+    id: 10,
+    nombre: "LA CREPIVARA",
+    descripcion: "Deliciosa crepe rellena con Nutella auténtica, plátano fresco y fresas, decorada con azúcar glass y crema batida.",
+    precio: 6400,
+    imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
+    ingredientes: ["3 frutas", "2 Helados", "Toppin", "Crema Chantylly", "Nutella"],
+    disponible: true,
+    categoria: "Crepas",
+  },
+   {
+    id: 11,
+    nombre: "Batido 1",
+    descripcion: "Batido Natural en Agua",
+    precio: 1450,
+    imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
+    ingredientes: ["Cas", "Mora", "Piña", "Sandía", "Guanabana", "fresa", "mora"],
+    disponible: true,
+    categoria: "Bebidas Frías",
+  },
+  {
+    id: 12,
+    nombre: "Batido 2",
+    descripcion: "Batido en leche",
+    precio: 1950,
+    imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
+    ingredientes: ["Mora", "Piña", "Guanabana", "Banano", "Papaya", "fresa", "melon"],
+    disponible: true,
+    categoria: "Bebidas Frías",
+  },
+  {
+    id: 13,
+    nombre: "CHURCHILL",
+    descripcion: " Bebida refrescante",
+    precio: 3450,
+    imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
+    ingredientes: [""],
+    disponible: true,
+    categoria: "Bebidas Frías",
+  },
+  {
+    id: 14,
+    nombre: "CAFÉ FRIO",
+    descripcion: "Cafe Frio",
+    precio: 2200,
+    imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
+    ingredientes: [""],
+    disponible: true,
+    categoria: "Bebidas Frías",
+  },
+  {
+    id: 15,
+    nombre: "MANGONADAS",
+    descripcion: "Mango",
+    precio: 2400,
+    imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
+    ingredientes: ["Mango", "Tajin", "Chamoy", "Gomitas"],
+    disponible: true,
+    categoria: "Bebidas Frías",
+  },
+  {
+    id: 16,
+    nombre: "TÉ",
+    descripcion: "Te caliente",
+    precio: 800,
+    imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
+    ingredientes: [""],
+    disponible: true,
+    categoria: "Bebidas Calientes",
+  },
+  {
+    id: 17,
+    nombre: "CAFÉ NEGRO",
+    descripcion: "Cafe caliente",
+    precio: 800,
+    imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
+    ingredientes: [""],
+    disponible: true,
+    categoria: "Bebidas Calientes",
+  },
+  {
+    id: 18,
+    nombre: "CAFÉ CON LECHE",
+    descripcion: "Cafe caliente",
+    precio: 900,
+    imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
+    ingredientes: [""],
+    disponible: true,
+    categoria: "Bebidas Calientes"
+  },
+  {
+    id: 19,
+    nombre: "CHOCOLATE",
+    descripcion: "Chocolate caliente",
+    precio: 900,
+    imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
+    ingredientes: [""],
+    disponible: true,
+    categoria: "Bebidas Calientes"
   }
 ];
 
 const CATEGORIES = [
   { key: 'todos', label: 'Todos', icon: <ReceiptText /> },
-  { key: 'dulces', label: 'Dulces', icon: <Candy /> },
-  { key: 'salados', label: 'Salados', icon: <ReceiptText /> },
-  { key: 'especiales', label: 'Especiales', icon: <PartyPopper /> },
-  { key: 'veganos', label: 'Veganos', icon: <Vegan /> },
-  { key: 'fitness', label: 'Fitness', icon: <Activity /> },
+  { key: 'crepas', label: 'Crepas', icon: <Candy /> },
+  { key: 'bebidas frías', label: 'Bebidas Frías', icon: <ReceiptText /> },
+  { key: 'bebidas calientes', label: 'Bebidas Calientes', icon: <PartyPopper /> }
 ];
 
 export default function MainMenu() {
@@ -107,6 +255,7 @@ export default function MainMenu() {
               <div className="row g-3 justify-content-center">
                 {CATEGORIES.map(({ key, label, icon }) => {
                   const isActive = key === selectedCategory;
+                  console.log(key)
                   // Cuenta dinámicamente productos por categoría
                   const count =
                     key === 'todos'
@@ -114,6 +263,8 @@ export default function MainMenu() {
                       : PRODUCTS.filter(
                           (p) => p.categoria.toLowerCase() === key
                         ).length;
+
+                        
                   return (
                     <div key={key} className="col-lg-2 col-md-3 col-sm-4 col-6">
                       <button

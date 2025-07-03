@@ -165,58 +165,130 @@ export default function TimeCounter() {
   };
 
   return (
-    <section style={{ position: 'relative', overflow: 'hidden' }}>
-      <div className="floating-elements">
-        {emojisFloating.map((e, idx) => (
-          <div key={idx} className="floating-crepe">{e}</div>
-        ))}
-      </div>
+  <section style={{ position: 'relative', overflow: 'hidden' }}>
+    <div className="floating-elements">
+      {emojisFloating.map((e, idx) => (
+        <div key={idx} className="floating-crepe">{e}</div>
+      ))}
+    </div>
 
-      <div className="countdown-container">
-        <div className="countdown-card">
-          <div className="countdown-header">
-            <div className="crepe-icon"><img src="../images/Logo.webp" alt="CrepiVara" className="img-time-counter"/></div>
-            <h1 className="countdown-title">¡Gran Apertura!</h1>
-            <p className="countdown-subtitle">Nuestra deliciosa crepería abrirá muy pronto</p>
+    <div className="countdown-container">
+      <div className="countdown-card">
+        <div className="countdown-header">
+          <div className="crepe-icon">
+            <img src="../images/Logo.webp" alt="CrepiVara" className="img-time-counter"/>
           </div>
+          <h1 className="countdown-title">¡Gran Apertura!</h1>
+          <p className="countdown-subtitle">
+            Nuestra deliciosa crepería abrirá muy pronto
+          </p>
+        </div>
 
-          {!expired ? (
-            <div className="countdown-display" style={{ display: 'flex', justifyContent: 'center', gap: '1rem' }}>
-              {['days', 'hours', 'minutes', 'seconds'].map(unit => (
-                <div key={unit} className="time-unit">
-                  <span className={`time-number${pulses[unit] ? ' pulse' : ''}`}>
-                    {timeLeft[unit]}
-                  </span>
-                  <span className="time-label">{unit === 'days' ? 'Días' : unit === 'hours' ? 'Horas' : unit === 'minutes' ? 'Minutos' : 'Segundos'}</span>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="expired-message">
-              <i className="fas fa-party-horn me-2"></i>
-              ¡Ya estamos abiertos! ¡Ven a disfrutar nuestras deliciosas crepes!
-              <i className="fas fa-party-horn ms-2"></i>
-            </div>
-          )}
+        {!expired ? (
+          <div className="countdown-display d-flex justify-content-center gap-3">
+            {['days', 'hours', 'minutes', 'seconds'].map(unit => (
+              <div key={unit} className="time-unit text-center">
+                <span className={`time-number${pulses[unit] ? ' pulse' : ''}`}>
+                  {timeLeft[unit]}
+                </span>
+                <h3 className="time-label">
+                  {unit === 'days' ? 'Días' :
+                   unit === 'hours' ? 'Horas' :
+                   unit === 'minutes' ? 'Minutos' :
+                   'Segundos'}
+                </h3>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="expired-message text-center">
+            <i className="fas fa-party-horn me-2"></i>
+            ¡Ya estamos abiertos! ¡Ven a disfrutar nuestras deliciosas crepes!
+            <i className="fas fa-party-horn ms-2"></i>
+          </div>
+        )}
 
-          <div className="countdown-message">
-            <p className="countdown-text">
-              ¡Prepárate para disfrutar de las crepes más deliciosas de la ciudad! 
-              Tendremos sabores únicos, ingredientes frescos y mucho amor en cada creación.
+        <div className="countdown-message mt-3">
+          <p className="countdown-text">
+            ¡Prepárate para disfrutar de las crepes más deliciosas de la ciudad! 
+            Tendremos sabores únicos, ingredientes frescos y mucho amor en cada creación.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    {/* Sección del Mapa Estilizada */}
+    <div className="map-section container">
+      <div className="map-decorative-elements">
+        <div className="floating-location">📍</div>
+        <div className="floating-location">🗺️</div>
+        <div className="floating-location">📍</div>
+      </div>
+      
+      <div className="map-container">
+        <div className="map-header">
+          <h2 className="map-title">
+            <span className="map-icon">📍</span>
+            Encuéntranos aquí
+          </h2>
+          <p className="map-subtitle">
+            Te esperamos en nuestra ubicación para que disfrutes la mejor experiencia
+          </p>
+        </div>
+
+        <div className="map-frame-container">
+          <iframe
+            className="map-iframe"
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d245.40875251958144!2d-83.78714960743129!3d10.217956979851799!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2scr!4v1751584859811!5m2!1ses-419!2scr"
+            allowFullScreen=""
+            loading="lazy"
+            title="Mapa de CrepiVara"
+          ></iframe>
+        </div>
+
+        <div className="map-info">
+          <div className="map-address">
+            <div className="address-text">
+              <i className="fas fa-map-marker-alt address-icon"></i>
+              CrepiVara - Crepería Gourmet
+            </div>
+            <p className="address-details">
+              Avenida 13, Guapiles, Costa Rica<br/>
+              Puente las Iguanas
             </p>
           </div>
+
+          <div className="map-actions">
+            <a 
+              href="https://maps.app.goo.gl/q942tWVBvJCwfJqe6" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="map-btn"
+            >
+              <i className="fas fa-directions"></i>
+              Cómo llegar
+            </a>
+            <a 
+              href="tel:+50612345678" 
+              className="map-btn map-btn-secondary"
+            >
+              <i className="fas fa-phone"></i>
+              Llamar ahora
+            </a>
+          </div>
         </div>
       </div>
+    </div>
 
-      {confettiPieces.map(piece => (
-        <div
-          key={piece.id}
-          className="confetti-piece"
-          style={{ left: `${piece.left}%` }}
-        >
-          {piece.emoji}
-        </div>
-      ))}
-    </section>
-  );
+    {confettiPieces.map(piece => (
+      <div
+        key={piece.id}
+        className="confetti-piece"
+        style={{ left: `${piece.left}%` }}
+      >
+        {piece.emoji}
+      </div>
+    ))}
+  </section>
+);
 }

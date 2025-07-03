@@ -144,18 +144,23 @@ const agregarAlCarrito = () => {
           <p className="card-text description mb-3">{descripcion}</p>
 
           {/* Ingredientes */}
-          {ingredientes.length > 0 && (
-            <div className="ingredients-section mb-3">
-              <h6 className="ingredients-title fw-bold">Ingredientes:</h6>
-              <div className="ingredients-list gap-2">
-                {ingredientes.map((ing, i) => (
-                  <span key={i} className="ingredient-tag">
-                    {ing}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
+{ingredientes.length > 0 && (
+  <div className="ingredients-section mb-4">
+    <h6 className="ingredients-title fw-bold mb-3">Ingredientes:</h6>
+
+    {/* Usamos row-cols-auto para que cada “badge” ocupe justo el espacio necesario */}
+    <div className="row row-cols-auto g-2">
+      {ingredientes.map((ing, i) => (
+        <div key={i} className="col">
+          {/* Badge de Bootstrap para destacar cada ingrediente */}
+          <span className="badge bg-secondary text-light px-3 py-2">
+            {ing}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+)}
 
           {/* Botón de acción */}
          <div className="mt-auto">

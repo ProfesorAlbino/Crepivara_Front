@@ -285,6 +285,10 @@
             .countdown-display {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .time-label{
+                font-size: 10px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -305,3 +309,308 @@
             display: block;
             margin: 0 auto;
         }
+
+
+
+        /* Estilos para la sección del mapa */
+.map-section {
+    position: relative;
+    z-index: 2;
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+
+.map-container {
+    background: var(--surface-glass);
+    backdrop-filter: blur(20px);
+    border: 2px solid var(--border-color);
+    border-radius: 25px;
+    padding: 2rem;
+    box-shadow: 
+        0 25px 50px rgba(124, 58, 237, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.map-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 35px 70px rgba(124, 58, 237, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+}
+
+.map-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(231, 121, 249, 0.1), transparent);
+    animation: shimmer 4s infinite;
+    pointer-events: none;
+}
+
+.map-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 3;
+}
+
+.map-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-color-1);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(124, 58, 237, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.map-icon {
+    font-size: 1.5rem;
+    color: var(--featured-1);
+    animation: bounce 2s infinite;
+}
+
+.map-subtitle {
+    font-size: 1rem;
+    color: var(--text-color-2);
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+.map-frame-container {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+    transition: all 0.3s ease;
+}
+
+.map-frame-container:hover {
+    transform: scale(1.02);
+    box-shadow: 
+        0 15px 40px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.3) inset;
+}
+
+.map-frame-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(124, 58, 237, 0.1) 0%,
+        transparent 50%,
+        rgba(231, 121, 249, 0.1) 100%);
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.map-frame-container:hover::before {
+    opacity: 1;
+}
+
+.map-iframe {
+    width: 100%;
+    height: 350px;
+    border: none;
+    border-radius: 15px;
+    filter: grayscale(0.3) contrast(1.1);
+    transition: all 0.3s ease;
+}
+
+.map-iframe:hover {
+    filter: grayscale(0) contrast(1.2);
+}
+
+.map-info {
+    margin-top: 1.5rem;
+    text-align: center;
+    position: relative;
+    z-index: 3;
+}
+
+.map-address {
+    background: var(--surface-glass-light);
+    border-radius: 15px;
+    padding: 1rem 1.5rem;
+    border: 1px solid var(--border-color);
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.map-address:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(124, 58, 237, 0.1);
+    border-color: var(--featured-1);
+}
+
+.address-text {
+    font-size: 1rem;
+    color: var(--text-color-1);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.address-icon {
+    color: var(--featured-1);
+    font-size: 1.1rem;
+}
+
+.address-details {
+    font-size: 0.9rem;
+    color: var(--text-color-2);
+    margin: 0;
+}
+
+.map-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.map-btn {
+    background: linear-gradient(135deg, var(--featured-1), var(--featured-2));
+    border: none;
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.map-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
+    color: white;
+}
+
+.map-btn-secondary {
+    background: var(--surface-glass-light);
+    border: 2px solid var(--border-color);
+    color: var(--text-color-1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.map-btn-secondary:hover {
+    background: var(--background-color-3);
+    border-color: var(--featured-1);
+    color: var(--featured-1);
+    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.2);
+}
+
+/* Elementos decorativos para el mapa */
+.map-decorative-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.floating-location {
+    position: absolute;
+    font-size: 1.5rem;
+    opacity: 0.1;
+    animation: float 8s ease-in-out infinite;
+}
+
+.floating-location:nth-child(1) {
+    top: 20%;
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.floating-location:nth-child(2) {
+    top: 60%;
+    right: 10%;
+    animation-delay: -3s;
+}
+
+.floating-location:nth-child(3) {
+    bottom: 30%;
+    left: 8%;
+    animation-delay: -6s;
+}
+
+/* Responsivo para el mapa */
+@media (max-width: 768px) {
+    .map-section {
+        margin-top: 2rem;
+        padding: 1rem 0;
+    }
+    
+    .map-container {
+        padding: 1.5rem;
+        margin: 0 0.5rem;
+    }
+    
+    .map-title {
+        font-size: 1.5rem;
+    }
+    
+    .map-iframe {
+        height: 250px;
+    }
+    
+    .map-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .map-btn {
+        width: 100%;
+        max-width: 250px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .map-container {
+        padding: 1rem;
+        border-radius: 20px;
+    }
+    
+    .map-frame-container {
+        border-radius: 12px;
+    }
+    
+    .map-iframe {
+        height: 200px;
+        border-radius: 12px;
+    }
+    
+    .map-title {
+        font-size: 1.3rem;
+    }
+    
+    .address-text {
+        font-size: 0.9rem;
+    }
+}
