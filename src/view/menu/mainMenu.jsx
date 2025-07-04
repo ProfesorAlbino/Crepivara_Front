@@ -1,207 +1,24 @@
 import React, { useState, useMemo } from 'react';
 import CardMenu from '../../components/cards/CardMenu';
 import "../../styles/view/MainMenuStyle.css"; // Asegúrate de tener el CSS adecuado
-import { ReceiptText, Candy, PartyPopper} from 'lucide-react';
+import { ReceiptText, Candy, PartyPopper, IceCream} from 'lucide-react';
+import { TbIceCream2 } from "react-icons/tb";
+import { GiStrawberry } from "react-icons/gi";
+import { getMenu } from '../../js/menu/menu';
+import { VscDebugBreakpointLog } from "react-icons/vsc";
 
 // Define tus productos aquí para mantener las rutas y clases existentes
-const PRODUCTS = [
-  {
-    id: 1,
-    nombre: "Banavara",
-    descripcion: "Deliciosa crepe rellena con Nutella auténtica, plátano fresco y fresas, decorada con azúcar glass y crema batida.",
-    precio: 3500,
-    imagenes: ["/images/menuImages/crepas/Banavara.webp"],
-    ingredientes: ["Nutella", "Plátano", "Fresas"],
-    disponible: true,
-    categoria: "Bebidas Frías",
-  },
-  {
-    id: 2,
-    nombre: "BerryVara",
-    descripcion: "Deliciosa crepe rellena con Nutella auténtica, plátano fresco y fresas, decorada con azúcar glass y crema batida.",
-    precio: 3500,
-    imagenes: ["/images/menuImages/crepas/Berryvara.webp"],
-    ingredientes: ["Nutella", "Plátano", "Fresas"],
-    disponible: true,
-    categoria: "Bebidas Frías",
-  },
-  {
-    id: 3,
-    nombre: "CafeCrepiVara",
-    descripcion: "Deliciosa crepe rellena con Nutella auténtica, plátano fresco y fresas, decorada con azúcar glass y crema batida.",
-    precio: 3500,
-    imagenes: ["/images/menuImages/crepas/Cafecrepivara.webp"],
-    ingredientes: ["Nutella", "Plátano", "Fresas"],
-    disponible: false,
-    categoria: "Bebidas Calientes", // ajusta según corresponda
-  },
-  {
-    id: 4,
-    nombre: "CafeVara",
-    descripcion: "Deliciosa crepe rellena con Nutella auténtica, plátano fresco y fresas, decorada con azúcar glass y crema batida.",
-    precio: 3500,
-    imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
-    ingredientes: ["Nutella", "Plátano", "Fresas"],
-    disponible: true,
-    categoria: "Bebidas Frías", // ajusta según corresponda
-  },
-  {
-    id: 5,
-    nombre: "CAPIBERRY",
-    descripcion: "Deliciosa crepe rellena con Nutella auténtica, plátano fresco y fresas, decorada con azúcar glass y crema batida.",
-    precio: 1900,
-    imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
-    ingredientes: ["2 frutas", "Jarabe", "Topping"],
-    disponible: true,
-    categoria: "Crepas",
-  },
-  {
-    id: 6,
-    nombre: "CREPA SIN FRUTA",
-    descripcion: "Deliciosa crepe rellena con Nutella auténtica, plátano fresco y fresas, decorada con azúcar glass y crema batida.",
-    precio: 2400,
-    imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
-    ingredientes: ["Helado", "Topping", "Jarabe"],
-    disponible: true,
-    categoria: "Crepas",
-  },
-  {
-    id: 7,
-    nombre: "TROPICALVARA",
-    descripcion: "Deliciosa crepe rellena con Nutella auténtica, plátano fresco y fresas, decorada con azúcar glass y crema batida.",
-    precio: 2900,
-    imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
-    ingredientes: ["Banano", "Fresas", "Helado", "Jarabe"],
-    disponible: true,
-    categoria: "Crepas",
-  },
-  {
-    id: 8,
-    nombre: "CAPIDULZURA",
-    descripcion: "Deliciosa crepe rellena con Nutella auténtica, plátano fresco y fresas, decorada con azúcar glass y crema batida.",
-    precio: 3400,
-    imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
-    ingredientes: ["Melocotón", "Fresa", "Helado", "Nutella"],
-    disponible: true,
-    categoria: "Crepas",
-  },
-  {
-    id: 9,
-    nombre: "CAPIOREO",
-    descripcion: "Deliciosa crepe rellena con Nutella auténtica, plátano fresco y fresas, decorada con azúcar glass y crema batida.",
-    precio: 4500,
-    imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
-    ingredientes: ["2 frutas", "Helado", "Oreo", "Jarabe", "Toppin"],
-    disponible: true,
-    categoria: "Crepas",
-  },
-  {
-    id: 10,
-    nombre: "LA CREPIVARA",
-    descripcion: "Deliciosa crepe rellena con Nutella auténtica, plátano fresco y fresas, decorada con azúcar glass y crema batida.",
-    precio: 6400,
-    imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
-    ingredientes: ["3 frutas", "2 Helados", "Toppin", "Crema Chantylly", "Nutella"],
-    disponible: true,
-    categoria: "Crepas",
-  },
-   {
-    id: 11,
-    nombre: "Batido 1",
-    descripcion: "Batido Natural en Agua",
-    precio: 1450,
-    imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
-    ingredientes: ["Cas", "Mora", "Piña", "Sandía", "Guanabana", "fresa", "mora"],
-    disponible: true,
-    categoria: "Bebidas Frías",
-  },
-  {
-    id: 12,
-    nombre: "Batido 2",
-    descripcion: "Batido en leche",
-    precio: 1950,
-    imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
-    ingredientes: ["Mora", "Piña", "Guanabana", "Banano", "Papaya", "fresa", "melon"],
-    disponible: true,
-    categoria: "Bebidas Frías",
-  },
-  {
-    id: 13,
-    nombre: "CHURCHILL",
-    descripcion: " Bebida refrescante",
-    precio: 3450,
-    imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
-    ingredientes: [""],
-    disponible: true,
-    categoria: "Bebidas Frías",
-  },
-  {
-    id: 14,
-    nombre: "CAFÉ FRIO",
-    descripcion: "Cafe Frio",
-    precio: 2200,
-    imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
-    ingredientes: [""],
-    disponible: true,
-    categoria: "Bebidas Frías",
-  },
-  {
-    id: 15,
-    nombre: "MANGONADAS",
-    descripcion: "Mango",
-    precio: 2400,
-    imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
-    ingredientes: ["Mango", "Tajin", "Chamoy", "Gomitas"],
-    disponible: true,
-    categoria: "Bebidas Frías",
-  },
-  {
-    id: 16,
-    nombre: "TÉ",
-    descripcion: "Te caliente",
-    precio: 800,
-    imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
-    ingredientes: [""],
-    disponible: true,
-    categoria: "Bebidas Calientes",
-  },
-  {
-    id: 17,
-    nombre: "CAFÉ NEGRO",
-    descripcion: "Cafe caliente",
-    precio: 800,
-    imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
-    ingredientes: [""],
-    disponible: true,
-    categoria: "Bebidas Calientes",
-  },
-  {
-    id: 18,
-    nombre: "CAFÉ CON LECHE",
-    descripcion: "Cafe caliente",
-    precio: 900,
-    imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
-    ingredientes: [""],
-    disponible: true,
-    categoria: "Bebidas Calientes"
-  },
-  {
-    id: 19,
-    nombre: "CHOCOLATE",
-    descripcion: "Chocolate caliente",
-    precio: 900,
-    imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
-    ingredientes: [""],
-    disponible: true,
-    categoria: "Bebidas Calientes"
-  }
-];
+const PRODUCTS = getMenu();
 
 const CATEGORIES = [
   { key: 'todos', label: 'Todos', icon: <ReceiptText /> },
   { key: 'crepas', label: 'Crepas', icon: <Candy /> },
   { key: 'bebidas frías', label: 'Bebidas Frías', icon: <ReceiptText /> },
-  { key: 'bebidas calientes', label: 'Bebidas Calientes', icon: <PartyPopper /> }
+  { key: 'bebidas calientes', label: 'Bebidas Calientes', icon: <PartyPopper /> },
+  { key: 'helados', label: 'Helados', icon: <IceCream />},
+  { key: 'granizados', label: 'Granizados', icon: <TbIceCream2 />},
+  { key: 'fresas', label: 'Fresas', icon: <GiStrawberry />},
+  { key: 'extras', label: 'Extras', icon: <VscDebugBreakpointLog />},
 ];
 
 export default function MainMenu() {
@@ -287,12 +104,12 @@ export default function MainMenu() {
             <div className="current-selection text-center mt-4">
               <div className="selection-indicator">
                 <i className="fas fa-filter me-2"></i>
-                Mostrando: <span className="current-category">
+                Mostrando: <p className="current-category">
                   {selectedCategory === 'todos'
                     ? 'Todos los crepes'
                     : CATEGORIES.find(c => c.key === selectedCategory)?.label}
-                </span>
-                <span className="current-count">({filteredProducts.length} productos)</span>
+                </p>
+                <p className="current-count">({filteredProducts.length} productos)</p>
               </div>
             </div>
           </div>
