@@ -275,7 +275,7 @@ export default function MainMenu() {
                         <div className="btn-icon">
                           {icon}
                         </div>
-                        <span className="btn-text">{label}</span>
+                        <p className="btn-text">{label}</p>
                         <div className="btn-count">{count}</div>
                       </button>
                     </div>
