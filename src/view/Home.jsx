@@ -6,26 +6,34 @@ import { useInView } from "react-intersection-observer";
 export default function Home() {
   // Asegúrate de que apunten a rutas válidas en tu carpeta "public/images"
   const images = [
-    "/images/Logo.webp",
+    "/images/LogoFondo.webp",
     "/images/home/foto1.webp",
     "/images/home/foto2.webp",
   ];
 
   const [current, setCurrent] = useState(0);
   const [loaded, setLoaded] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const timeoutRef = useRef(null);
   // Intervalo en milisegundos
-  const intervalMs = 4000;
+  const intervalMs = 5000;
 
   const { ref: inViewRef, inView } = useInView({ triggerOnce: true });
 
   useEffect(() => {
     if (!inView) return;
-    // Programa el cambio de imagen tras intervalMs
+
     timeoutRef.current = setTimeout(() => {
+      setIsTransitioning(true);
       setLoaded(false);
-      setCurrent((i) => (i + 1) % images.length);
+
+      // Pequeño delay para la transición
+      setTimeout(() => {
+        setCurrent((i) => (i + 1) % images.length);
+        setIsTransitioning(false);
+      }, 300);
     }, intervalMs);
+
     return () => clearTimeout(timeoutRef.current);
   }, [current, inView, intervalMs, images.length]);
 
@@ -36,38 +44,55 @@ export default function Home() {
         className="hero container-fluid d-flex align-items-center"
       >
         <div className="container">
-          <div className="row justify-content-center align-items-center">
+          <div className="row justify-content-center align-items-center g-4">
             {/* Texto y botones */}
-            <div className="col-12 col-md-6 d-flex flex-column align-items-center mb-5 mb-md-0">
-              <h1 className="hero-title text-center">CrepyVara</h1>
-              <p className="hero-subtitle text-center">
-                Deliciosas crepas artesanales hechas con amor…
-              </p>
-              <div className="cta-buttons d-flex gap-2">
-                <Link to="/menu" className="btn btn-primary btn-md">
-                  Ver Menú
-                </Link>
-                <Link to="/reservas" className="btn btn-secondary btn-md">
-                  Hacer Reserva
-                </Link>
+            <div className="col-12 col-lg-6 d-flex flex-column align-items-center mb-4 mb-lg-0">
+              <div className="hero-content text-center">
+                <h1 className="hero-title display-3 fw-bold mb-3">CrepyVara</h1>
+                <p className="hero-subtitle lead mb-4">
+                  Deliciosas crepas artesanales hechas con amor…
+                </p>
+                <div className="cta-buttons d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                  <Link to="/menu" className="btn btn-primary btn-lg px-4 py-3">
+                    <i className="fas fa-utensils me-2"></i>
+                    Ver Menú
+                  </Link>
+                </div>
               </div>
             </div>
 
-            {/* Slider */}
-            <div className="col-12 col-md-6 d-flex justify-content-center">
-              <div ref={inViewRef} className="logo-wrapper slow-fade-slider">
+            {/* Slider Mejorado */}
+            <div className="col-12 col-lg-6 d-flex justify-content-center align-items-center">
+              <div
+                ref={inViewRef}
+                className="image-slider-container position-relative"
+              >
                 {inView && (
-                  <img
-                    key={current}
-                    src={images[current]}
-                    alt={`Slide ${current + 1}`}
-                    className={`slide-img ${loaded ? "visible" : ""}`}
-                    onLoad={() => setLoaded(true)}
-                  />
+                  <div className="slider-wrapper d-flex justify-content-center align-items-center">
+                    {/* Imagen principal */}
+                    <div className="main-image-container position-relative overflow-hidden d-flex justify-content-center align-items-center">
+                      <img
+                        key={current}
+                        src={images[current]}
+                        alt={`Slide ${current + 1}`}
+                        className={`main-slide-img img-fluid ${
+                          loaded ? "visible" : ""
+                        } ${isTransitioning ? "transitioning" : ""}`}
+                        onLoad={() => setLoaded(true)}
+                      />
+                    </div>
+                  </div>
                 )}
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Elementos decorativos de fondo */}
+        <div className="floating-shapes">
+          <div className="shape shape-1"></div>
+          <div className="shape shape-2"></div>
+          <div className="shape shape-3"></div>
         </div>
       </section>
 
@@ -147,6 +172,7 @@ export default function Home() {
         </svg>
       </div>
 
+
       <section className="container-fluid py-5 destacados-section">
         <div className="container">
           <div className="row mb-5">
@@ -163,7 +189,7 @@ export default function Home() {
 
           <div className="row g-4">
             <div className="col-lg-3 col-md-6 fade-in-up">
-              <div className="destacado-card">
+              <div className="destacado-card h-100">
                 <div className="destacado-icon">
                   <i className="fas fa-crown"></i>
                 </div>
@@ -178,7 +204,7 @@ export default function Home() {
             </div>
 
             <div className="col-lg-3 col-md-6 fade-in-up">
-              <div className="destacado-card">
+              <div className="destacado-card h-100">
                 <div className="destacado-icon">
                   <i className="fas fa-fire"></i>
                 </div>
@@ -193,7 +219,7 @@ export default function Home() {
             </div>
 
             <div className="col-lg-3 col-md-6 fade-in-up">
-              <div className="destacado-card">
+              <div className="destacado-card h-100">
                 <div className="destacado-icon">
                   <i className="fas fa-leaf"></i>
                 </div>
@@ -208,7 +234,7 @@ export default function Home() {
             </div>
 
             <div className="col-lg-3 col-md-6 fade-in-up">
-              <div className="destacado-card">
+              <div className="destacado-card h-100">
                 <div className="destacado-icon">
                   <i className="fas fa-ice-cream"></i>
                 </div>
@@ -225,26 +251,18 @@ export default function Home() {
 
           <div className="row mt-5">
             <div className="col-12 text-center">
-              <button
-                className="btn btn-lg px-5 py-3"
-                style={{
-                  background:
-                    "linear-gradient(135deg, var(--featured-1), var(--accent-1))",
-                  border: "none",
-                  borderRadius: "30px",
-                  color: "white",
-                  fontWeight: 600,
-                  textTransform: "uppercase",
-                  letterSpacing: "1px",
-                }}
+              <Link
+                to="/menu"
+                className="btn btn-lg px-5 py-3 btn-menu-completo"
               >
                 <i className="fas fa-utensils me-2"></i>
                 Ver Menú Completo
-              </button>
+              </Link>
             </div>
           </div>
         </div>
       </section>
+
 
       <div className="container-fluid wave2">
         <svg viewBox="0 0 1536 200">
