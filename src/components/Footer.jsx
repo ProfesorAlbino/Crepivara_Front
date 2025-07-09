@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router";
 import {
   Calendar,
   FacebookIcon,
@@ -73,7 +74,7 @@ export class Footer extends Component {
                     </div>
                     <div className="contact-item">
                       <Calendar />
-                      <p>Lun - Dom: 8:00 AM - 10:00 PM</p>
+                      <p>Lun - Dom: 11:00 AM - 8:00 PM</p>
                     </div>
                   </div>
                 </div>
@@ -86,32 +87,23 @@ export class Footer extends Component {
                     <div className="col-6">
                       <ul className="footer-links">
                         <li>
-                          <a href="#inicio">Inicio</a>
+                          <a href="#home">Inicio</a>
                         </li>
                         <li>
-                          <a href="#menu">Menú</a>
+                          <Link to="/menu">
+                          Menú
+                          </Link>
                         </li>
-                        <li>
-                          <a href="#especialidades">Especialidades</a>
-                        </li>
-                        <li>
-                          <a href="#promociones">Promociones</a>
-                        </li>
+                        
                       </ul>
                     </div>
                     <div className="col-6">
                       <ul className="footer-links">
                         <li>
-                          <a href="#nosotros">Nosotros</a>
+                          <Link to="/aboutus">Nosotros</Link>
                         </li>
                         <li>
-                          <a href="#contacto">Contacto</a>
-                        </li>
-                        <li>
-                          <a href="#delivery">Delivery</a>
-                        </li>
-                        <li>
-                          <a href="#eventos">Eventos</a>
+                          <a href="#recommendations">Recomendaciones</a>
                         </li>
                       </ul>
                     </div>

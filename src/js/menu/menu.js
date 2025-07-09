@@ -61,7 +61,7 @@ export function getMenu() {
       descripcion:
         "Deliciosa crepe rellena con Nutella auténtica, plátano fresco y fresas, decorada con azúcar glass y crema batida.",
       precio: 2400,
-      imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
+      imagenes: ["/images/menuImages/crepas/CrepaSinFruta.webp", "/images/menuImages/crepas/CrepaSinFruta2.webp"],
       ingredientes: ["Helado", "Topping", "Jarabe"],
       disponible: true,
       categoria: "Crepas",
@@ -72,7 +72,7 @@ export function getMenu() {
       descripcion:
         "Deliciosa crepe rellena con Nutella auténtica, plátano fresco y fresas, decorada con azúcar glass y crema batida.",
       precio: 2900,
-      imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
+      imagenes: ["/images/menuImages/crepas/TropicalVara1.webp"],
       ingredientes: ["Banano", "Fresas", "Helado", "Jarabe"],
       disponible: true,
       categoria: "Crepas",
@@ -83,7 +83,7 @@ export function getMenu() {
       descripcion:
         "Deliciosa crepe rellena con Nutella auténtica, plátano fresco y fresas, decorada con azúcar glass y crema batida.",
       precio: 3400,
-      imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
+      imagenes: ["/images/menuImages/crepas/CrepiDulzura1.webp", "/images/menuImages/crepas/CrepiDulzura2.webp"],
       ingredientes: ["Melocotón", "Fresa", "Helado", "Nutella"],
       disponible: true,
       categoria: "Crepas",
@@ -105,7 +105,7 @@ export function getMenu() {
       descripcion:
         "Deliciosa crepe rellena con Nutella auténtica, plátano fresco y fresas, decorada con azúcar glass y crema batida.",
       precio: 6400,
-      imagenes: ["/images/menuImages/crepas/Cafevara.webp"],
+      imagenes: ["/images/menuImages/crepas/CrepiVara1.webp", "/images/menuImages/crepas/CrepiVara2.webp"],
       ingredientes: [
         "3 frutas",
         "2 Helados",
@@ -393,4 +393,16 @@ export function getMenu() {
       categoria: "Extras",
     },
   ];
+}
+
+
+//Id de las recomendadas de 1000 para arriba
+export function getRecommended(){
+
+   return [
+    getMenu().find(item => item.id === 10),
+    getMenu().find(item => item.id === 8),
+    getMenu().find(item => item.id === 29),
+    getMenu().find(item => item.id === 12),
+  ]
 }

@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import "../styles/view/HomeStyle.css";
 import { Link } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
+import { getRecommended } from "../js/menu/menu";
+import CardMenu from "../components/cards/CardMenu";
 
 export default function Home() {
   // Asegúrate de que apunten a rutas válidas en tu carpeta "public/images"
@@ -10,6 +12,8 @@ export default function Home() {
     "/images/home/foto1.webp",
     "/images/home/foto2.webp",
   ];
+
+  const CREPAS = getRecommended();
 
   const [current, setCurrent] = useState(0);
   const [loaded, setLoaded] = useState(false);
@@ -172,13 +176,12 @@ export default function Home() {
         </svg>
       </div>
 
-
-      <section className="container-fluid py-5 destacados-section">
+      <section className="container-fluid py-5 destacados-section" id="recommendations">
         <div className="container">
           <div className="row mb-5">
             <div className="col-12">
               <h2 className="destacados-title display-4">
-                Nuestros Destacados
+                Productos Recomendados
               </h2>
               <p className="destacados-subtitle lead">
                 Las crepes más populares de nuestra crepería, preparadas con
@@ -187,66 +190,22 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="row g-4">
-            <div className="col-lg-3 col-md-6 fade-in-up">
-              <div className="destacado-card h-100">
-                <div className="destacado-icon">
-                  <i className="fas fa-crown"></i>
-                </div>
-                <h4>Crepe Nutella Premium</h4>
-                <p>
-                  Deliciosa crepe rellena con Nutella auténtica, plátano fresco
-                  y fresas, decorada con azúcar glass y crema batida.
-                </p>
-                <div className="destacado-precio">₡3,500</div>
-                <button className="btn destacado-btn">Ordenar Ahora</button>
-              </div>
-            </div>
-
-            <div className="col-lg-3 col-md-6 fade-in-up">
-              <div className="destacado-card h-100">
-                <div className="destacado-icon">
-                  <i className="fas fa-fire"></i>
-                </div>
-                <h4>Crepe Especial de la Casa</h4>
-                <p>
-                  Nuestra receta secreta con jamón, queso, champiñones frescos,
-                  espinaca y salsa especial. ¡Un favorito absoluto!
-                </p>
-                <div className="destacado-precio">₡4,200</div>
-                <button className="btn destacado-btn">Ordenar Ahora</button>
-              </div>
-            </div>
-
-            <div className="col-lg-3 col-md-6 fade-in-up">
-              <div className="destacado-card h-100">
-                <div className="destacado-icon">
-                  <i className="fas fa-leaf"></i>
-                </div>
-                <h4>Crepe Vegetariana Gourmet</h4>
-                <p>
-                  Crepe integral con verduras asadas, queso de cabra, aguacate,
-                  tomates cherry y vinagreta de hierbas frescas.
-                </p>
-                <div className="destacado-precio">₡3,800</div>
-                <button className="btn destacado-btn">Ordenar Ahora</button>
-              </div>
-            </div>
-
-            <div className="col-lg-3 col-md-6 fade-in-up">
-              <div className="destacado-card h-100">
-                <div className="destacado-icon">
-                  <i className="fas fa-ice-cream"></i>
-                </div>
-                <h4>Crepe Dulce Tropical</h4>
-                <p>
-                  Explosión de sabores tropicales con mango, piña, coco rallado,
-                  helado de vainilla y salsa de maracuyá.
-                </p>
-                <div className="destacado-precio">₡3,200</div>
-                <button className="btn destacado-btn">Ordenar Ahora</button>
-              </div>
-            </div>
+          <div className="row g-4 justify-content-center">
+            {CREPAS.map((item, index) => (
+              <div key={item.id} className="col-12 col-md-3 mt-3">
+            <CardMenu
+              nombre={item.nombre}
+              descripcion={item.descripcion}
+              precio={item.precio}
+              imagenes={item.imagenes}
+              ingredientes={item.ingredientes}
+              disponible={item.disponible}
+              categoria={item.categoria}
+              id={item.id}
+              className="mt-3 mb-3"
+            />
+          </div>
+            ))}
           </div>
 
           <div className="row mt-5">
@@ -262,7 +221,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
 
       <div className="container-fluid wave2">
         <svg viewBox="0 0 1536 200">
