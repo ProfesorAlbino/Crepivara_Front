@@ -8,7 +8,12 @@ import {
   MapPinned,
   Phone,
 } from "lucide-react";
+import { IoHomeOutline } from "react-icons/io5";
 import { FaTiktok, FaWhatsapp } from "react-icons/fa6";
+import { MdMenuBook } from "react-icons/md";
+import { FaRegStar } from "react-icons/fa";
+import { AiOutlineLike } from "react-icons/ai";
+
 import "../styles/components/FooterStyle.css";
 
 export class Footer extends Component {
@@ -43,7 +48,7 @@ export class Footer extends Component {
                     >
                       <FaWhatsapp />
                     </a>
-                    <a href="/" className="social-link" aria-label="TikTok">
+                    <a href="https://tinyurl.com/34rw9ymr" className="social-link" aria-label="TikTok">
                       <FaTiktok />
                     </a>
                   </div>
@@ -87,11 +92,12 @@ export class Footer extends Component {
                     <div className="col-6">
                       <ul className="footer-links">
                         <li>
-                          <a href="#home">Inicio</a>
+                          
+                          <a href="#home"> <IoHomeOutline/> Inicio</a>
                         </li>
                         <li>
                           <Link to="/menu">
-                          Menú
+                          <MdMenuBook/> Menú
                           </Link>
                         </li>
                         
@@ -100,10 +106,10 @@ export class Footer extends Component {
                     <div className="col-6">
                       <ul className="footer-links">
                         <li>
-                          <Link to="/aboutus">Nosotros</Link>
+                          <Link to="/aboutus"> <FaRegStar/> Nosotros</Link>
                         </li>
                         <li>
-                          <a href="#recommendations">Recomendaciones</a>
+                          <a href="#recommendations"><AiOutlineLike/> Recomendaciones</a>
                         </li>
                       </ul>
                     </div>

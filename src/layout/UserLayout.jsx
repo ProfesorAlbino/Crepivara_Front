@@ -4,8 +4,8 @@ import { Outlet } from "react-router-dom";
 import "../styles/layout/UserLayoutStyle.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer"; // Uncomment if you want to use Footer
-import { ShoppingCart } from "lucide-react";
-import { Link } from "react-router-dom"; // Import Link for navigation
+// import { ShoppingCart } from "lucide-react";
+// import { Link } from "react-router-dom"; // Import Link for navigation
 
 const UserLayout = () => {
 
@@ -19,11 +19,11 @@ const UserLayout = () => {
       <main className="flex-grow p-6 bg-gray-100">
         <Outlet />
 
-        <div className="svg-shopping">
+        {/* <div className="svg-shopping">
           <Link to="/orders">
            <ShoppingCart style={{ color: "white" }} />
          </Link>
-        </div>
+        </div> */}
 
         <div className="svg-whatsapp">
           <a

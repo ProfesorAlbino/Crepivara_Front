@@ -1,5 +1,14 @@
 import React from 'react'
 import "../../styles/view/AboutUsStyle.css"
+
+import { MdHistoryEdu } from "react-icons/md";
+import { FaRegStar, FaLeaf, FaMagic } from "react-icons/fa";
+import { GiStarsStack } from "react-icons/gi";
+import { MdFamilyRestroom } from "react-icons/md";
+import { FaHandshakeSimple } from "react-icons/fa6";
+import { IoIosTimer } from "react-icons/io";
+import { FaMapLocationDot } from "react-icons/fa6";
+
 import { Link } from 'react-router'
 
 export default function AboutUs() {
@@ -18,7 +27,7 @@ export default function AboutUs() {
                 <div className="col-lg-6 mb-4">
                     <div className="about-card h-100">
                         <div className="card-icon">
-                            <i className="fas fa-heart"></i>
+                            <MdHistoryEdu/>
                         </div>
                         <h3>Nuestra Historia</h3>
                         <p>CrepiVara nació del sueño de compartir la auténtica experiencia de los crepes franceses con nuestra comunidad. Fundada por amantes de la gastronomía, nuestra crepería combina técnicas tradicionales con ingredientes frescos y locales para crear momentos inolvidables en cada bocado.</p>
@@ -27,10 +36,19 @@ export default function AboutUs() {
                 <div className="col-lg-6 mb-4">
                     <div className="about-card h-100">
                         <div className="card-icon">
-                            <i className="fas fa-utensils"></i>
+                            <FaRegStar/>
                         </div>
-                        <h3>Nuestra Especialidad</h3>
-                        <p>Nos especializamos en crepes artesanales preparados al momento, desde dulces tentaciones hasta opciones saladas gourmet. Cada receta es cuidadosamente elaborada para ofrecerte una experiencia culinaria única que despertará todos tus sentidos.</p>
+                        <h3>¿Quiénes Somos?</h3>
+<p>En <strong>CrepiVara</strong> nos apasiona crear momentos deliciosos y memorables. Por eso, nos comprometemos a:</p>
+<ul>
+  <li>🥞 Preparar cada crepa al instante, con ingredientes frescos y de la más alta calidad.</li>
+  <li>😊 Ofrecerte un ambiente cálido y acogedor, donde cada visita sea una celebración.</li>
+  <li>🌱 Escuchar tus gustos y sugerencias: tu satisfacción es nuestra mejor receta.</li>
+  <li>🧼 Mantener impecables estándares de limpieza y seguridad para tu tranquilidad.</li>
+  <li>💜 Endulzar tu día, porque una crepa no solo alimenta… ¡también alegra el alma!</li>
+</ul>
+<p>Gracias por formar parte de la familia <strong>CrepiVara</strong>.<br/>
+¡Disfruta cada bocado con una gran sonrisa!</p>
                     </div>
                 </div>
             </div>
@@ -68,7 +86,7 @@ export default function AboutUs() {
                             <div className="col-md-3 col-6 mb-3">
                                 <div className="value-item">
                                     <div className="value-icon">
-                                        <i className="fas fa-star"></i>
+                                        <GiStarsStack/>
                                     </div>
                                     <h5>Calidad</h5>
                                     <p>Ingredientes premium y técnicas perfectas</p>
@@ -77,7 +95,7 @@ export default function AboutUs() {
                             <div className="col-md-3 col-6 mb-3">
                                 <div className="value-item">
                                     <div className="value-icon">
-                                        <i className="fas fa-leaf"></i>
+                                        <FaLeaf/>
                                     </div>
                                     <h5>Frescura</h5>
                                     <p>Ingredientes frescos y locales siempre</p>
@@ -86,7 +104,7 @@ export default function AboutUs() {
                             <div className="col-md-3 col-6 mb-3">
                                 <div className="value-item">
                                     <div className="value-icon">
-                                        <i className="fas fa-users"></i>
+                                        <MdFamilyRestroom/>
                                     </div>
                                     <h5>Familia</h5>
                                     <p>Un ambiente cálido y acogedor</p>
@@ -95,7 +113,7 @@ export default function AboutUs() {
                             <div className="col-md-3 col-6 mb-3">
                                 <div className="value-item">
                                     <div className="value-icon">
-                                        <i className="fas fa-magic"></i>
+                                        <FaMagic/>
                                     </div>
                                     <h5>Tradición</h5>
                                     <p>Respeto por las recetas auténticas</p>
@@ -110,31 +128,31 @@ export default function AboutUs() {
                 <div className="col-lg-4 mb-4">
                     <div className="info-card">
                         <div className="info-icon">
-                            <i className="fas fa-clock"></i>
+                            <IoIosTimer /> 
                         </div>
                         <h4>Horarios de Atención</h4>
                         <div className="schedule-list">
                             <div className="schedule-item">
                                 <span className="day">Lunes - Viernes</span>
-                                <span className="time">8:00 AM - 10:00 PM</span>
+                                <span className="time">11:00 AM - 9:00 PM</span>
                             </div>
                             <div className="schedule-item">
                                 <span className="day">Sábados</span>
-                                <span className="time">9:00 AM - 11:00 PM</span>
+                                <span className="time">11:00 AM - 9:00 PM</span>
                             </div>
                             <div className="schedule-item">
                                 <span className="day">Domingos</span>
-                                <span className="time">9:00 AM - 9:00 PM</span>
+                                <span className="time">11:00 AM - 9:00 PM</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="col-lg-4 mb-4">
+                {/* <div className="col-lg-4 mb-4">
                     <div className="info-card">
                         <div className="info-icon">
-                            <i className="fas fa-award"></i>
+                            <FaMapLocationDot />
                         </div>
-                        <h4>Nuestros Logros</h4>
+                        <h4>Ubicación</h4>
                         <ul className="achievements-list">
                             <li><i className="fas fa-trophy"></i> Mejor Crepería Local 2023</li>
                             <li><i className="fas fa-medal"></i> Premio a la Innovación Gastronómica</li>
@@ -142,11 +160,11 @@ export default function AboutUs() {
                             <li><i className="fas fa-heart"></i> Cliente Favorito certificado</li>
                         </ul>
                     </div>
-                </div>
+                </div> */}
                 <div className="col-lg-4 mb-4">
                     <div className="info-card">
                         <div className="info-icon">
-                            <i className="fas fa-handshake"></i>
+                            <FaHandshakeSimple />
                         </div>
                         <h4>Compromiso Social</h4>
                         <p>En CrepiVara creemos en retribuir a nuestra comunidad. Apoyamos a productores locales, participamos en eventos benéficos y trabajamos para reducir nuestro impacto ambiental a través de prácticas sostenibles.</p>
@@ -166,7 +184,7 @@ export default function AboutUs() {
                         <p>Ven y descubre por qué somos más que una crepería, somos tu nuevo lugar favorito</p>
                         <div className="cta-buttons">
                             <Link to="/menu" className="btn btn-primary-custom me-3">Ver Menú</Link>
-                            <a href="#contacto" className="btn btn-outline-custom">Contáctanos</a>
+                            {/* <a href="#contacto" className="btn btn-outline-custom">Contáctanos</a> */}
                         </div>
                     </div>
                 </div>

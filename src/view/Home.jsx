@@ -52,7 +52,7 @@ export default function Home() {
             {/* Texto y botones */}
             <div className="col-12 col-lg-6 d-flex flex-column align-items-center mb-4 mb-lg-0">
               <div className="hero-content text-center">
-                <h1 className="hero-title display-3 fw-bold mb-3">CrepyVara</h1>
+                <h1 className="hero-title display-3 fw-bold mb-3">CrepiVara</h1>
                 <p className="hero-subtitle lead mb-4">
                   Deliciosas crepas artesanales hechas con amor…
                 </p>
@@ -184,7 +184,7 @@ export default function Home() {
                 Productos Recomendados
               </h2>
               <p className="destacados-subtitle lead">
-                Las crepes más populares de nuestra crepería, preparadas con
+                Las crepas más populares de nuestra crepería, preparadas con
                 ingredientes frescos y mucho amor
               </p>
             </div>

@@ -1,20 +1,23 @@
 import React, { useState, useMemo } from 'react';
 import CardMenu from '../../components/cards/CardMenu';
 import "../../styles/view/MainMenuStyle.css"; // Asegúrate de tener el CSS adecuado
-import { ReceiptText, Candy, PartyPopper, IceCream} from 'lucide-react';
+import { ReceiptText, IceCream} from 'lucide-react';
 import { TbIceCream2 } from "react-icons/tb";
 import { GiStrawberry } from "react-icons/gi";
 import { getMenu } from '../../js/menu/menu';
 import { VscDebugBreakpointLog } from "react-icons/vsc";
+import { LuCakeSlice } from "react-icons/lu";
+import { MdLocalDrink } from "react-icons/md";
+import { FaMugHot } from "react-icons/fa";
 
 // Define tus productos aquí para mantener las rutas y clases existentes
 const PRODUCTS = getMenu();
 
 const CATEGORIES = [
   { key: 'todos', label: 'Todos', icon: <ReceiptText /> },
-  { key: 'crepas', label: 'Crepas', icon: <Candy /> },
-  { key: 'bebidas frías', label: 'Bebidas Frías', icon: <ReceiptText /> },
-  { key: 'bebidas calientes', label: 'Bebidas Calientes', icon: <PartyPopper /> },
+  { key: 'crepas', label: 'Crepas', icon: <LuCakeSlice /> },
+  { key: 'bebidas frías', label: 'Bebidas Frías', icon: <MdLocalDrink /> },
+  { key: 'bebidas calientes', label: 'Bebidas Calientes', icon: <FaMugHot /> },
   { key: 'helados', label: 'Helados', icon: <IceCream />},
   { key: 'granizados', label: 'Granizados', icon: <TbIceCream2 />},
   { key: 'fresas', label: 'Fresas', icon: <GiStrawberry />},
@@ -72,7 +75,6 @@ export default function MainMenu() {
               <div className="row g-3 justify-content-center">
                 {CATEGORIES.map(({ key, label, icon }) => {
                   const isActive = key === selectedCategory;
-                  console.log(key)
                   // Cuenta dinámicamente productos por categoría
                   const count =
                     key === 'todos'

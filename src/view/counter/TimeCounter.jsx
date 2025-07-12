@@ -21,7 +21,7 @@ export default function TimeCounter() {
  useEffect(() => {
     // Cambia según tu herramienta (CRA o Vite):
     const openingDateStr = process.env.REACT_APP_OPENING_DATE;
-    const hourOpeningDateStr = process.env.REACT_APP_OPENING_HOUR; // si usas CRA
+    const hourOpeningDateStr = 10; // si usas CRA
     // const openingDateStr = import.meta.env.VITE_OPENING_DATE; // si usas Vite
 
     if (!openingDateStr) {

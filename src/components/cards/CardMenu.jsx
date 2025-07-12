@@ -13,7 +13,7 @@ const CardMenu = ({
   id,
 }) => {
   const [imagenActual, setImagenActual] = useState(0);
-  const [agregado, setAgregado] = useState(false);
+  //const [agregado, setAgregado] = useState(false);
 
   const cambiarImagen = (indice) => {
     setImagenActual(indice);
@@ -28,6 +28,7 @@ const CardMenu = ({
   };
 
   //Agregar al carrito (localStorage)
+  /*
 const agregarAlCarrito = () => {
   const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
@@ -66,6 +67,7 @@ const agregarAlCarrito = () => {
     setAgregado(false);
   }, 2000);
 };
+*/
 
   return (
     <div className="menu-card">
@@ -163,7 +165,7 @@ const agregarAlCarrito = () => {
 )}
 
           {/* Botón de acción */}
-         <div className="mt-auto">
+         {/* <div className="mt-auto">
       <button
   onClick={agregarAlCarrito}
   type="button"
@@ -178,7 +180,7 @@ const agregarAlCarrito = () => {
       : "Agregar a la Orden"
     : "No Disponible"}
 </button>
-    </div>
+    </div> */}
 
 
         </div>
