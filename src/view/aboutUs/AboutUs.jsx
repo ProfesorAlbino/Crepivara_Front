@@ -7,7 +7,6 @@ import { GiStarsStack } from "react-icons/gi";
 import { MdFamilyRestroom } from "react-icons/md";
 import { FaHandshakeSimple } from "react-icons/fa6";
 import { IoIosTimer } from "react-icons/io";
-import { FaMapLocationDot } from "react-icons/fa6";
 
 import { Link } from 'react-router'
 
